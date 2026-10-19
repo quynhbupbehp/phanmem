@@ -29,23 +29,34 @@
       --badge-bit-bg: #1e293b;
       --badge-bit-text: #93c5fd;
 
+      /* Hiệu ứng chọn dòng: chuyển sang MÀU XANH LÁ */
       --row-selected-bg: rgba(34, 197, 94, 0.22);
       --row-selected-border: #22c55e;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       background-color: var(--bg);
       color: var(--text);
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       padding: 32px 16px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    .container { width: 100%; max-width: 1240px; }
 
+    .container {
+      width: 100%;
+      max-width: 1240px;
+    }
+
+    /* Header Banner */
     .header-card {
       background: linear-gradient(135deg, #1e1b4b 0%, #172554 50%, #0f172a 100%);
       border: 1px solid rgba(99, 102, 241, 0.25);
@@ -58,46 +69,88 @@
       justify-content: space-between;
       align-items: center;
       gap: 18px;
+      position: relative;
+      overflow: hidden;
     }
+
     .title-area h1 {
       font-size: 25px;
       font-weight: 800;
-      color: #ffffff;
-      text-transform: uppercase;
+      letter-spacing: -0.5px;
       display: flex;
       align-items: center;
       gap: 12px;
+      color: #ffffff;
+      text-transform: uppercase;
     }
+
     .title-area h1 .logo-badge {
       background: linear-gradient(135deg, #ef4444, #f97316);
       color: #fff;
       font-size: 13px;
+      font-weight: 800;
       padding: 4px 10px;
       border-radius: 6px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
     }
+
     .title-area p.slogan {
       color: #facc15;
       font-size: 14px;
       font-weight: 800;
       text-transform: uppercase;
       margin-top: 6px;
+      letter-spacing: 0.5px;
     }
-    .header-right-info { text-align: right; }
+
+    .header-right-info {
+      text-align: right;
+      z-index: 1;
+    }
+
     .header-right-info h2 {
       font-size: 16px;
       font-weight: 800;
       color: #38bdf8;
       text-transform: uppercase;
+      letter-spacing: 0.4px;
       margin-bottom: 6px;
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
     }
+
     .header-right-info p.services {
       font-size: 13.5px;
       font-weight: 700;
       color: #facc15;
       text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .brand-tabs-wrapper { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+    @media (max-width: 768px) {
+      .header-right-info {
+        text-align: left;
+        margin-top: 10px;
+        border-top: 1px dashed rgba(255, 255, 255, 0.15);
+        padding-top: 12px;
+        width: 100%;
+      }
+    }
+
+    /* Brand Filter Tabs */
+    @keyframes tabPulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7); }
+      50% { transform: scale(1.04); box-shadow: 0 0 14px 4px rgba(244, 63, 94, 0.5); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7); }
+    }
+
+    .brand-tabs-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
     .brand-tab {
       background: #111827;
       border: 1px solid var(--border-light);
@@ -107,15 +160,29 @@
       font-size: 13.5px;
       font-weight: 800;
       cursor: pointer;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
+
+    .brand-tab:hover {
+      background: #1e293b;
+      color: #f1f5f9;
+      border-color: #475569;
+    }
+
     .brand-tab.active {
       background: linear-gradient(135deg, #fb7185, #e11d48) !important;
       color: #ffffff !important;
       border-color: #fda4af !important;
+      animation: tabPulse 0.45s ease-out;
+      box-shadow: 0 4px 16px rgba(225, 29, 72, 0.5) !important;
     }
 
+    /* Controls Bar */
     .controls-wrapper {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -126,7 +193,9 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
     }
+
     .search-container-left {
       display: flex;
       align-items: center;
@@ -134,21 +203,33 @@
       flex: 1;
       max-width: 580px;
     }
+
     .search-title-label {
       color: #facc15;
       font-size: 14px;
       font-weight: 800;
       text-transform: uppercase;
+      letter-spacing: 0.5px;
       white-space: nowrap;
+      user-select: none;
     }
-    .search-box { position: relative; flex: 1; }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      max-width: 460px;
+    }
+
     .search-icon {
       position: absolute;
       left: 14px;
       top: 50%;
       transform: translateY(-50%);
       color: var(--text-muted);
+      font-size: 16px;
+      pointer-events: none;
     }
+
     .search-input {
       width: 100%;
       background: #0d131f;
@@ -160,22 +241,40 @@
       font-weight: 600;
       text-transform: uppercase;
       outline: none;
+      transition: all 0.2s ease;
     }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+      background: #111827;
+    }
+
+    /* Nút xóa tìm kiếm màu đỏ ở góc phải */
     .btn-clear-search {
       position: absolute;
       right: 10px;
       top: 50%;
       transform: translateY(-50%);
       background: #dc2626;
-      color: #fff;
+      color: #ffffff;
       border: none;
       width: 22px;
       height: 22px;
       border-radius: 50%;
+      font-size: 12px;
+      font-weight: 800;
       display: none;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 8px rgba(220, 38, 38, 0.4);
+    }
+
+    .btn-clear-search:hover {
+      background: #ef4444;
+      transform: translateY(-50%) scale(1.1);
     }
 
     .btn-add-new {
@@ -188,16 +287,35 @@
       font-weight: 800;
       text-transform: uppercase;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
       white-space: nowrap;
     }
 
+    .btn-add-new:hover {
+      background: linear-gradient(135deg, #059669, #047857);
+      transform: translateY(-1px);
+    }
+
+    /* Table */
     .table-wrapper {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 16px;
       overflow-x: auto;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
     }
-    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14px;
+    }
+
     thead th {
       background: #1e293b;
       color: #e2e8f0;
@@ -205,55 +323,183 @@
       font-weight: 800;
       font-size: 13px;
       text-transform: uppercase;
+      letter-spacing: 0.6px;
+      border-bottom: 1px solid var(--border-light);
       white-space: nowrap;
     }
-    tbody tr { border-bottom: 1px solid #1a2234; text-transform: uppercase; }
-    tbody tr:hover:not(.selected-row) { background-color: rgba(59, 130, 246, 0.05); }
+
+    tbody tr {
+      border-bottom: 1px solid #1a2234;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    tbody tr:hover:not(.selected-row) {
+      background-color: rgba(59, 130, 246, 0.05);
+    }
+
     tbody tr.selected-row {
       background-color: var(--row-selected-bg) !important;
       outline: 2px solid var(--row-selected-border);
       outline-offset: -2px;
     }
-    td { padding: 12px 16px; vertical-align: middle; font-weight: 600; white-space: nowrap; }
 
-    .model-name, .version-code { color: #ffffff !important; }
-    tr.is-fail { background-color: #000000 !important; }
-    tr.is-fail td, tr.is-fail .model-name, tr.is-fail .version-code, tr.is-fail .link-label-text, tr.is-fail .password-text {
+    td {
+      padding: 12px 16px;
+      vertical-align: middle;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .model-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 14.5px;
+      color: #ffffff !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Badge Hãng nhận diện khi tìm kiếm xuyên tab */
+    .brand-badge-inline {
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+    .brand-samsung { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); }
+    .brand-oppo { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+    .brand-vivo { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); }
+    .brand-xiaomi { background: rgba(249, 115, 22, 0.2); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.4); }
+    .brand-khac { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); }
+
+    .version-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #ffffff !important;
+    }
+
+    tr.is-fail {
+      background-color: #000000 !important;
+    }
+
+    tr.is-fail td,
+    tr.is-fail .model-name,
+    tr.is-fail .version-code,
+    tr.is-fail .chipset-tag,
+    tr.is-fail .link-label-text,
+    tr.is-fail .password-text {
       color: #facc15 !important;
       font-weight: 800;
     }
-    tr.is-fail .bit-tag { border-color: #facc15 !important; color: #facc15 !important; background: #18181b !important; }
+
+    tr.is-fail .bit-tag {
+      border-color: #facc15 !important;
+      color: #facc15 !important;
+      background: #18181b !important;
+    }
+
+    tr.is-fail .status-fail {
+      background: rgba(250, 204, 21, 0.15) !important;
+      border-color: rgba(250, 204, 21, 0.4) !important;
+      color: #facc15 !important;
+    }
 
     .bit-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
       padding: 3px 7px;
       border-radius: 5px;
       background: var(--badge-bit-bg);
       color: var(--badge-bit-text);
       font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 12.5px;
       border: 1px solid rgba(147, 197, 253, 0.2);
+    }
+
+    .chipset-tag {
+      color: #cbd5e1;
+      font-size: 13px;
+      font-weight: 700;
     }
     .chipset-tag.exynos { color: #93c5fd; }
     .chipset-tag.mtk { color: #fdba74; }
     .chipset-tag.qualcomm { color: #86efac; }
     .chipset-tag.spd { color: #e879f9; }
 
-    .link-cell-wrapper { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
-    .link-label-text { color: #fff; font-weight: 800; font-size: 13.5px; }
+    .link-cell-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+
+    .link-label-text {
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 13.5px;
+      letter-spacing: 0.3px;
+    }
+
     .btn-link-action {
       border: none;
+      outline: none;
+      cursor: pointer;
       padding: 4px 8px;
       font-size: 11.5px;
       font-weight: 800;
       text-transform: uppercase;
       border-radius: 5px;
-      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
     }
-    .btn-copy { background: #1e293b; color: #facc15; border: 1px solid rgba(250, 204, 21, 0.4); }
-    .btn-open { background: rgba(56, 189, 248, 0.12); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); }
 
-    .password-cell-wrapper { display: inline-flex; align-items: center; gap: 8px; }
-    .password-text { font-family: 'JetBrains Mono', monospace; font-size: 13.5px; color: #cbd5e1; }
+    .btn-copy {
+      background: #1e293b;
+      color: #facc15;
+      border: 1px solid rgba(250, 204, 21, 0.4);
+    }
+    .btn-copy:hover {
+      background: #334155;
+      border-color: #facc15;
+      transform: translateY(-1px);
+    }
+
+    .btn-open {
+      background: rgba(56, 189, 248, 0.12);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+    .btn-open:hover {
+      background: rgba(56, 189, 248, 0.25);
+      border-color: #38bdf8;
+      transform: translateY(-1px);
+    }
+
+    .password-cell-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+
+    .password-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #cbd5e1;
+      letter-spacing: 0.5px;
+      text-transform: none;
+    }
+
     .btn-toggle-pwd {
       background: #1e293b;
       border: 1px solid var(--border-light);
@@ -262,20 +508,63 @@
       padding: 3px 7px;
       border-radius: 4px;
       font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .btn-toggle-pwd:hover {
+      background: #334155;
+      color: #fff;
+      border-color: var(--primary);
     }
 
     .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
       padding: 4px 10px;
       border-radius: 20px;
       font-size: 12px;
       font-weight: 800;
+      letter-spacing: 0.3px;
       text-transform: uppercase;
     }
-    .status-ok { background: var(--badge-ok-bg); color: var(--badge-ok-text); border: 1px solid var(--badge-ok-border); }
-    .status-fail { background: rgba(250, 204, 21, 0.15) !important; color: #facc15 !important; border: 1px solid rgba(250, 204, 21, 0.4) !important; }
 
-    .actions-group { display: inline-flex; gap: 6px; }
+    .status-ok {
+      background: var(--badge-ok-bg);
+      border: 1px solid var(--badge-ok-border);
+      color: var(--badge-ok-text);
+    }
+
+    .status-fail {
+      background: var(--badge-fail-bg);
+      border: 1px solid var(--badge-fail-border);
+      color: #ff2222;
+    }
+
+    .video-link {
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .actions-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+
     .btn-action {
+      outline: none;
       cursor: pointer;
       padding: 5px 10px;
       font-size: 13px;
@@ -284,10 +573,49 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
+      transition: all 0.15s ease;
+      text-transform: none;
+      letter-spacing: 0;
     }
-    .btn-clone { background: #1e1b4b; color: #c084fc; border: 1px solid rgba(192, 132, 252, 0.35); }
-    .btn-edit { background: #161f30; color: #60a5fa; border: 1px solid #2d4263; }
-    .btn-delete { background: #24161b; color: #f87171; border: 1px solid #4a2128; }
+
+    .btn-edit {
+      background: #161f30;
+      color: #60a5fa;
+      border: 1px solid #2d4263;
+    }
+    .btn-edit:hover {
+      background: #1e2e4a;
+      border-color: #3b82f6;
+    }
+
+    .btn-delete {
+      background: #24161b;
+      color: #f87171;
+      border: 1px solid #4a2128;
+    }
+    .btn-delete:hover {
+      background: #361b22;
+      border-color: #ef4444;
+    }
+
+    .btn-clone {
+      background: #1e1b4b;
+      color: #c084fc;
+      border: 1px solid rgba(192, 132, 252, 0.35);
+    }
+    .btn-clone:hover {
+      background: #2e1065;
+      border-color: #c084fc;
+      color: #ffffff;
+    }
+
+    .empty-state {
+      padding: 44px 16px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      display: none;
+    }
 
     .bottom-stats-bar {
       margin-top: 18px;
@@ -298,22 +626,32 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 12px;
-      font-weight: 700;
+    }
+
+    .stats-info {
+      font-size: 13.5px;
       color: var(--text-muted);
+      font-weight: 700;
       text-transform: uppercase;
     }
-    .stats-info span { color: #facc15; font-weight: 800; }
+
+    .stats-info span {
+      color: #facc15;
+      font-weight: 800;
+    }
 
     .modal-overlay {
       position: fixed;
       inset: 0;
       background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
       display: none;
       justify-content: center;
       align-items: center;
       z-index: 999;
       padding: 16px;
     }
+
     .modal-content {
       background: var(--card-bg);
       border: 1px solid var(--border-light);
@@ -321,7 +659,9 @@
       width: 100%;
       max-width: 520px;
       padding: 24px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
     }
+
     .modal-header {
       display: flex;
       justify-content: space-between;
@@ -330,12 +670,43 @@
       border-bottom: 1px solid var(--border);
       padding-bottom: 12px;
     }
-    .modal-header h3 { font-size: 19px; color: #ff2222; font-weight: 800; text-transform: uppercase; }
-    .close-modal { background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; }
-    .form-group { margin-bottom: 14px; }
-    .form-row { display: flex; gap: 12px; margin-bottom: 14px; }
-    .col-30 { flex: 0 0 calc(30% - 6px); }
-    .col-70 { flex: 0 0 calc(70% - 6px); }
+
+    .modal-header h3 {
+      font-size: 19px;
+      color: #ff2222;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .close-modal {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .col-30 {
+      flex: 0 0 calc(30% - 6px);
+      width: calc(30% - 6px);
+    }
+
+    .col-70 {
+      flex: 0 0 calc(70% - 6px);
+      width: calc(70% - 6px);
+    }
+
     .form-group label, .form-col label {
       display: block;
       font-size: 13px;
@@ -343,7 +714,9 @@
       margin-bottom: 6px;
       font-weight: 800;
       text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
+
     .form-control {
       width: 100%;
       background: #0d131f;
@@ -353,12 +726,57 @@
       color: #fff;
       font-size: 14px;
       outline: none;
+      transition: border-color 0.2s ease;
       text-transform: uppercase;
     }
-    .form-control.no-uppercase { text-transform: none !important; }
-    .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
-    .btn-save { background: #2563eb; color: #fff; padding: 9px 18px; border-radius: 8px; border: none; cursor: pointer; font-weight: 800; text-transform: uppercase; }
-    .btn-cancel { background: #1f2937; color: var(--text-muted); padding: 9px 18px; border-radius: 8px; border: none; cursor: pointer; font-weight: 700; text-transform: uppercase; }
+
+    .form-control:focus {
+      border-color: var(--primary);
+    }
+
+    .form-control.no-uppercase {
+      text-transform: none !important;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn-save {
+      background: #2563eb;
+      color: #fff;
+      padding: 9px 18px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 13.5px;
+      text-transform: uppercase;
+    }
+
+    .btn-save:hover {
+      background: #1d4ed8;
+    }
+
+    .btn-cancel {
+      background: #1f2937;
+      color: var(--text-muted);
+      padding: 9px 18px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 13.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .btn-cancel:hover {
+      background: #374151;
+      color: #fff;
+    }
 
     #copyToast {
       position: fixed;
@@ -366,26 +784,36 @@
       left: 50%;
       transform: translateX(-50%) translateY(100px);
       background: #10b981;
-      color: #fff;
+      color: #ffffff;
       padding: 10px 20px;
       border-radius: 8px;
       font-weight: 800;
       font-size: 13px;
       text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
       z-index: 9999;
       opacity: 0;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
+      pointer-events: none;
     }
-    #copyToast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-    .empty-state { padding: 40px; text-align: center; color: var(--text-muted); display: none; }
+
+    #copyToast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
+    <!-- Header -->
     <div class="header-card">
       <div class="title-area">
-        <h1>DANH SÁCH MÁY ĐÃ TEST <span class="logo-badge">QUYNH BUP BE</span></h1>
+        <h1>
+          DANH SÁCH MÁY ĐÃ TEST
+          <span class="logo-badge">QUYNH BUP BE</span>
+        </h1>
         <p class="slogan">ĐỊA CHỈ ĐÁNG TIN CẬY CỦA MỌI MÁY TRỘM CẮP , NHẶT ĐƯỢC</p>
       </div>
       <div class="header-right-info">
@@ -394,42 +822,59 @@
       </div>
     </div>
 
+    <!-- Thanh phân chia theo Hãng (Đã bỏ Tab TẤT CẢ, Mặc định chọn OPPO) -->
     <div class="brand-tabs-wrapper">
-      <button class="brand-tab active" onclick="setBrandFilter('ALL', this)">TẤT CẢ</button>
       <button class="brand-tab" onclick="setBrandFilter('SAMSUNG', this)">SAMSUNG</button>
-      <button class="brand-tab" onclick="setBrandFilter('OPPO', this)">OPPO</button>
+      <button class="brand-tab active" onclick="setBrandFilter('OPPO', this)">OPPO</button>
       <button class="brand-tab" onclick="setBrandFilter('VIVO', this)">VIVO</button>
       <button class="brand-tab" onclick="setBrandFilter('XIAOMI', this)">XIAOMI</button>
       <button class="brand-tab" onclick="setBrandFilter('KHAC', this)">HÃNG KHÁC</button>
     </div>
 
+    <!-- Controls / Search / Nút Thêm Mới -->
     <div class="controls-wrapper">
       <div class="search-container-left">
         <span class="search-title-label">TÌM KIẾM</span>
         <div class="search-box">
           <span class="search-icon">🔍</span>
-          <input type="text" id="searchInput" class="search-input" oninput="handleSearchInput()" autocomplete="off">
-          <button id="clearSearchBtn" class="btn-clear-search" onclick="clearSearch()">✕</button>
+          <input 
+            type="text" 
+            id="searchInput" 
+            class="search-input" 
+            oninput="handleSearchInput()"
+            autocomplete="off"
+          >
+          <button id="clearSearchBtn" class="btn-clear-search" onclick="clearSearch()" title="Xóa tìm kiếm">✕</button>
         </div>
       </div>
-      <button class="btn-add-new" onclick="openAddModal()">THÊM MỚI</button>
+      <button class="btn-add-new" onclick="openAddModal()">
+        THÊM MỚI
+      </button>
     </div>
 
+    <!-- Table -->
     <div class="table-wrapper">
       <table id="frpTable">
         <thead id="tableHead"></thead>
         <tbody id="tableBody"></tbody>
       </table>
-      <div id="noResults" class="empty-state">KHÔNG TÌM THẤY MÁY NÀO PHÙ HỢP!</div>
+      
+      <div id="noResults" class="empty-state">
+        KHÔNG TÌM THẤY MÁY NÀO PHÙ HỢP!
+      </div>
     </div>
 
+    <!-- Dòng thống kê -->
     <div class="bottom-stats-bar">
-      <div class="stats-info">HIỂN THỊ: <span id="visibleCount">0</span> / <span id="totalCount">0</span> DÒNG</div>
+      <div class="stats-info">
+        HIỂN THỊ: <span id="visibleCount">0</span> / <span id="totalCount">0</span> DÒNG
+      </div>
     </div>
   </div>
 
   <div id="copyToast">ĐÃ ĐỒNG BỘ THÀNH CÔNG!</div>
 
+  <!-- Modal Thêm Mới / Sửa -->
   <div id="dataModal" class="modal-overlay">
     <div class="modal-content">
       <div class="modal-header">
@@ -440,8 +885,8 @@
       <div class="form-group">
         <label>HÃNG SẢN XUẤT:</label>
         <select id="inputBrand" class="form-control" onchange="toggleModalFields()">
-          <option value="SAMSUNG">SAMSUNG</option>
           <option value="OPPO">OPPO</option>
+          <option value="SAMSUNG">SAMSUNG</option>
           <option value="VIVO">VIVO</option>
           <option value="XIAOMI">XIAOMI</option>
           <option value="KHAC">HÃNG KHÁC</option>
@@ -453,23 +898,23 @@
         <input type="text" id="inputModel" class="form-control" placeholder="VÍ DỤ: RENO 8, REDMI NOTE 12, S23...">
       </div>
 
-      <div id="samsungFields" class="form-row">
+      <div id="samsungFields" class="form-row" style="display: none;">
         <div class="form-col col-30">
           <label>BIT:</label>
-          <input type="text" id="inputBit" class="form-control">
+          <input type="text" id="inputBit" class="form-control" placeholder="1, 5, E...">
         </div>
         <div class="form-col col-70">
           <label>VER MÁY:</label>
-          <input type="text" id="inputVer" class="form-control">
+          <input type="text" id="inputVer" class="form-control" placeholder="MÃ PHIÊN BẢN PHẦN MỀM">
         </div>
       </div>
 
-      <div id="nonSamsungFields" class="form-group" style="display: none;">
+      <div id="nonSamsungFields" class="form-group">
         <label>LINK TẢI FILE:</label>
-        <input type="text" id="inputLink" class="form-control no-uppercase">
+        <input type="text" id="inputLink" class="form-control no-uppercase" placeholder="Dán link tải file">
       </div>
 
-      <div id="samsungChipRow" class="form-row">
+      <div id="samsungChipRow" class="form-row" style="display: none;">
         <div class="form-col col-70">
           <label>CHIPSET:</label>
           <select id="inputChip" class="form-control">
@@ -489,10 +934,10 @@
         </div>
       </div>
 
-      <div id="nonSamsungPassRow" class="form-row" style="display: none;">
+      <div id="nonSamsungPassRow" class="form-row">
         <div class="form-col col-70">
           <label>MẬT KHẨU:</label>
-          <input type="text" id="inputPassword" class="form-control no-uppercase">
+          <input type="text" id="inputPassword" class="form-control no-uppercase" placeholder="Mật khẩu file (nếu có)">
         </div>
         <div class="form-col col-30">
           <label>ĐÃ TEST:</label>
@@ -512,7 +957,6 @@
   </div>
 
   <script>
-    // Link Database trực tiếp từ Firebase của bạn
     const FIREBASE_DB_URL = "https://frp-database-default-rtdb.firebaseio.com"; 
 
     const INITIAL_SAMPLES = [
@@ -536,15 +980,14 @@
       { id: "18", brand: "SAMSUNG", model: "A175F", bit: "3", ver: "U3 ĐỖ LẠI OK - CAO HƠN BỎ", chip: "MTK", status: "-", link: "", password: "" },
       { id: "19", brand: "SAMSUNG", model: "S926N", bit: "-", ver: "-", chip: "EXYNOS", status: "OK", link: "", password: "" },
       { id: "20", brand: "SAMSUNG", model: "S731B", bit: "9", ver: "-", chip: "EXYNOS", status: "OK", link: "", password: "" },
-      { id: "21", brand: "SAMSUNG", model: "A366N", bit: "-", ver: "QUALCOMM", chip: "QUALCOMM", status: "-", link: "", password: "" }
+      { id: "21", brand: "SAMSUNG", model: "A366N", bit: "-", ver: "QUALCOMM", chip: "QUALCOMM", status: "-", link: "" , password: "" }
     ];
 
     let deviceList = [];
-    let activeBrand = 'ALL';
+    let activeBrand = 'OPPO'; // MẶC ĐỊNH CHỌN TAB OPPO
     let editTargetId = null;
     let passwordVisibilityMap = {};
 
-    // Tự động tải từ Firebase (Online)
     async function fetchOnlineData() {
       try {
         const res = await fetch(`${FIREBASE_DB_URL}/devices.json`);
@@ -554,7 +997,6 @@
         } else if (data && typeof data === 'object') {
           deviceList = Object.values(data);
         } else {
-          // Lần đầu database trống, đẩy danh sách mẫu 21 máy lên Firebase
           deviceList = [...INITIAL_SAMPLES];
           await syncOnlineData();
         }
@@ -565,7 +1007,6 @@
       renderTable();
     }
 
-    // Tự động đồng bộ lên Firebase khi thêm/sửa/xóa
     async function syncOnlineData() {
       try {
         await fetch(`${FIREBASE_DB_URL}/devices.json`, {
@@ -573,7 +1014,7 @@
           body: JSON.stringify(deviceList),
           headers: { 'Content-Type': 'application/json' }
         });
-        showToast("ĐÃ ĐỒNG BỘ MỌI THIẾT BỊ!");
+        showToast("ĐÃ ĐỒNG BỘ THÀNH CÔNG!");
       } catch (err) {
         alert("Lỗi khi đồng bộ lên máy chủ: " + err.message);
       }
@@ -583,19 +1024,20 @@
       return brand === 'OPPO' || brand === 'VIVO' || brand === 'XIAOMI' || brand === 'KHAC';
     }
 
-    function renderTableHeader() {
+    // Header tự động thích ứng: Nếu đang tìm kiếm thì hiển thị cột tổng quát
+    function renderTableHeader(isSearching = false) {
       const thead = document.getElementById('tableHead');
-      if (isLinkTab(activeBrand)) {
+      if (isSearching) {
         thead.innerHTML = `
           <tr>
-            <th style="min-width: 240px; width: 35%;">TÊN MÁY</th>
-            <th style="width: 25%;">LINK</th>
-            <th style="width: 16%;">MẬT KHẨU</th>
-            <th style="width: 10%; text-align: center;">ĐÃ TEST</th>
-            <th style="width: 14%; text-align: center;">THAO TÁC</th>
+            <th style="min-width: 250px; width: 35%;">TÊN MÁY (TẤT CẢ HÃNG)</th>
+            <th style="white-space: nowrap; width: 25%;">LINK / VER MÁY</th>
+            <th style="white-space: nowrap; width: 16%;">MẬT KHẨU / CHIPSET</th>
+            <th style="white-space: nowrap; width: 10%; text-align: center;">ĐÃ TEST</th>
+            <th style="white-space: nowrap; width: 14%; text-align: center;">THAO TÁC</th>
           </tr>
         `;
-      } else {
+      } else if (activeBrand === 'SAMSUNG') {
         thead.innerHTML = `
           <tr>
             <th style="width: 15%;">TÊN MÁY</th>
@@ -604,6 +1046,16 @@
             <th style="width: 17%;">CHIPSET</th>
             <th style="width: 11%; text-align: center;">ĐÃ TEST</th>
             <th style="width: 14%; text-align: center;">THAO TÁC</th>
+          </tr>
+        `;
+      } else {
+        thead.innerHTML = `
+          <tr>
+            <th style="min-width: 240px; width: 35%;">TÊN MÁY</th>
+            <th style="white-space: nowrap; width: 25%;">LINK</th>
+            <th style="white-space: nowrap; width: 16%;">MẬT KHẨU</th>
+            <th style="white-space: nowrap; width: 10%; text-align: center;">ĐÃ TEST</th>
+            <th style="white-space: nowrap; width: 14%; text-align: center;">THAO TÁC</th>
           </tr>
         `;
       }
@@ -626,16 +1078,18 @@
     }
 
     function renderTable() {
-      renderTableHeader();
+      const searchVal = document.getElementById('searchInput') ? document.getElementById('searchInput').value.trim() : '';
+      const isSearching = searchVal.length > 0;
+
+      renderTableHeader(isSearching);
       const tbody = document.getElementById('tableBody');
       tbody.innerHTML = '';
-
-      const isCurrentLinkView = isLinkTab(activeBrand);
 
       deviceList.forEach(item => {
         const tr = document.createElement('tr');
         tr.setAttribute('data-id', item.id);
-        tr.setAttribute('data-brand', item.brand || 'KHAC');
+        const itemBrand = (item.brand || 'KHAC').toUpperCase();
+        tr.setAttribute('data-brand', itemBrand);
         
         const isFail = item.status && (item.status.includes('SỊT') || item.status.includes('SIT'));
         if (isFail) tr.classList.add('is-fail');
@@ -649,7 +1103,96 @@
         const safeModel = escapeHtml(item.model || '-');
         const rawUrl = item.link || item.ver || '';
 
-        if (isCurrentLinkView) {
+        let brandBadgeHtml = '';
+        if (isSearching) {
+          let bClass = 'brand-khac';
+          if (itemBrand.includes('SAMSUNG')) bClass = 'brand-samsung';
+          else if (itemBrand.includes('OPPO')) bClass = 'brand-oppo';
+          else if (itemBrand.includes('VIVO')) bClass = 'brand-vivo';
+          else if (itemBrand.includes('XIAOMI')) bClass = 'brand-xiaomi';
+          brandBadgeHtml = `<span class="brand-badge-inline ${bClass}">${itemBrand}</span>`;
+        }
+
+        if (isSearching) {
+          let col2Html = '-';
+          let col3Html = '-';
+
+          if (itemBrand === 'SAMSUNG') {
+            col2Html = (item.isLink || (item.ver && item.ver.startsWith('http'))) ? 
+              `<a class="video-link" href="${escapeHtml(item.ver)}" target="_blank" rel="noopener">▶ XEM VIDEO HD</a>` : 
+              `<span class="version-code">${escapeHtml(item.ver || '-')}</span>`;
+            
+            let chipClass = 'exynos';
+            const upperChip = (item.chip || '').toUpperCase();
+            if (upperChip.includes('MTK')) chipClass = 'mtk';
+            else if (upperChip.includes('QUALCOMM')) chipClass = 'qualcomm';
+            else if (upperChip.includes('SPD')) chipClass = 'spd';
+
+            col3Html = `<span class="bit-tag" style="margin-right: 6px;">${escapeHtml(item.bit || '-')}</span><span class="chipset-tag ${chipClass}">${escapeHtml(item.chip || '-')}</span>`;
+          } else {
+            col2Html = `
+              <div class="link-cell-wrapper">
+                <span class="link-label-text">LINK TẢI FILE</span>
+                <button class="btn-link-action btn-copy" onclick="copyFileLink('${encodeURIComponent(rawUrl)}', event)">📋 SAO CHÉP</button>
+                <button class="btn-link-action btn-open" onclick="openFileLink('${encodeURIComponent(rawUrl)}', event)">🌐 MỞ WEB</button>
+              </div>
+            `;
+            const rawPwd = item.password || '-';
+            const isVisible = Boolean(passwordVisibilityMap[item.id]);
+            let displayPwd = '-';
+            if (rawPwd !== '-') displayPwd = isVisible ? escapeHtml(rawPwd) : '••••••••';
+            col3Html = `
+              <div class="password-cell-wrapper">
+                <span class="password-text">${displayPwd}</span>
+                ${rawPwd !== '-' ? `
+                  <button class="btn-toggle-pwd" onclick="togglePasswordVisibility('${item.id}', event)">
+                    ${isVisible ? '👁️‍🗨️ ẨN' : '👁️ HIỆN'}
+                  </button>
+                ` : ''}
+              </div>
+            `;
+          }
+
+          tr.innerHTML = `
+            <td class="model-name">${brandBadgeHtml} ${safeModel}</td>
+            <td>${col2Html}</td>
+            <td>${col3Html}</td>
+            <td style="text-align: center;">${statusHtml}</td>
+            <td style="text-align: center;">
+              <div class="actions-group">
+                <button class="btn-action btn-clone" onclick="openCloneModalById('${item.id}', event)"><span>📑</span> Nhân bản</button>
+                <button class="btn-action btn-edit" onclick="openEditModalById('${item.id}', event)"><span>✏️</span> Sửa</button>
+                <button class="btn-action btn-delete" onclick="deleteRowById('${item.id}', event)"><span>🗑️</span> Xóa</button>
+              </div>
+            </td>
+          `;
+        } else if (activeBrand === 'SAMSUNG') {
+          let chipClass = 'exynos';
+          const upperChip = (item.chip || '').toUpperCase();
+          if (upperChip.includes('MTK')) chipClass = 'mtk';
+          else if (upperChip.includes('QUALCOMM')) chipClass = 'qualcomm';
+          else if (upperChip.includes('SPD')) chipClass = 'spd';
+
+          let verContent = escapeHtml(item.ver || '-');
+          if (item.isLink || (item.ver && item.ver.startsWith('http'))) {
+            verContent = `<a class="video-link" href="${escapeHtml(item.ver)}" target="_blank" rel="noopener">▶ XEM VIDEO HD</a>`;
+          }
+
+          tr.innerHTML = `
+            <td class="model-name">${safeModel}</td>
+            <td style="text-align: center;"><span class="bit-tag">${escapeHtml(item.bit || '-')}</span></td>
+            <td class="version-code">${verContent}</td>
+            <td><span class="chipset-tag ${chipClass}">${escapeHtml(item.chip || '-')}</span></td>
+            <td style="text-align: center;">${statusHtml}</td>
+            <td style="text-align: center;">
+              <div class="actions-group">
+                <button class="btn-action btn-clone" onclick="openCloneModalById('${item.id}', event)"><span>📑</span> Nhân bản</button>
+                <button class="btn-action btn-edit" onclick="openEditModalById('${item.id}', event)"><span>✏️</span> Sửa</button>
+                <button class="btn-action btn-delete" onclick="deleteRowById('${item.id}', event)"><span>🗑️</span> Xóa</button>
+              </div>
+            </td>
+          `;
+        } else {
           let linkCellHtml = `
             <div class="link-cell-wrapper">
               <span class="link-label-text">LINK TẢI FILE</span>
@@ -680,32 +1223,6 @@
             <td class="model-name">${safeModel}</td>
             <td>${linkCellHtml}</td>
             <td>${pwdCellHtml}</td>
-            <td style="text-align: center;">${statusHtml}</td>
-            <td style="text-align: center;">
-              <div class="actions-group">
-                <button class="btn-action btn-clone" onclick="openCloneModalById('${item.id}', event)"><span>📑</span> Nhân bản</button>
-                <button class="btn-action btn-edit" onclick="openEditModalById('${item.id}', event)"><span>✏️</span> Sửa</button>
-                <button class="btn-action btn-delete" onclick="deleteRowById('${item.id}', event)"><span>🗑️</span> Xóa</button>
-              </div>
-            </td>
-          `;
-        } else {
-          let chipClass = 'exynos';
-          const upperChip = (item.chip || '').toUpperCase();
-          if (upperChip.includes('MTK')) chipClass = 'mtk';
-          else if (upperChip.includes('QUALCOMM')) chipClass = 'qualcomm';
-          else if (upperChip.includes('SPD')) chipClass = 'spd';
-
-          let verContent = escapeHtml(item.ver || '-');
-          if (item.isLink || (item.ver && item.ver.startsWith('http'))) {
-            verContent = `<a class="video-link" href="${escapeHtml(item.ver)}" target="_blank" rel="noopener">▶ XEM VIDEO HD</a>`;
-          }
-
-          tr.innerHTML = `
-            <td class="model-name">${safeModel}</td>
-            <td style="text-align: center;"><span class="bit-tag">${escapeHtml(item.bit || '-')}</span></td>
-            <td class="version-code">${verContent}</td>
-            <td><span class="chipset-tag ${chipClass}">${escapeHtml(item.chip || '-')}</span></td>
             <td style="text-align: center;">${statusHtml}</td>
             <td style="text-align: center;">
               <div class="actions-group">
@@ -759,8 +1276,9 @@
 
     function handleSearchInput() {
       const input = document.getElementById('searchInput');
-      document.getElementById('clearSearchBtn').style.display = input.value.trim().length > 0 ? 'flex' : 'none';
-      applyFilter();
+      const hasText = input.value.trim().length > 0;
+      document.getElementById('clearSearchBtn').style.display = hasText ? 'flex' : 'none';
+      renderTable();
     }
 
     function clearSearch() {
@@ -768,7 +1286,7 @@
       input.value = '';
       document.getElementById('clearSearchBtn').style.display = 'none';
       input.focus();
-      applyFilter();
+      renderTable();
     }
 
     function openCloneModalById(id, event) {
@@ -778,7 +1296,7 @@
 
       editTargetId = null;
       document.getElementById('modalTitle').innerHTML = 'Nhân bản máy đã test';
-      document.getElementById('inputBrand').value = item.brand || 'KHAC';
+      document.getElementById('inputBrand').value = item.brand || 'OPPO';
       document.getElementById('inputModel').value = item.model ? (item.model + ' (BẢN SAO)') : '';
       document.getElementById('inputBit').value = (item.bit === '-') ? '' : (item.bit || '');
       document.getElementById('inputVer').value = (item.ver === '-') ? '' : (item.ver || '');
@@ -809,8 +1327,10 @@
         const rowBrand = row.getAttribute('data-brand') || 'KHAC';
         const modelTd = row.getElementsByTagName('td')[0];
         const modelText = modelTd ? (modelTd.textContent || modelTd.innerText).toUpperCase() : '';
-        const matchBrand = (activeBrand === 'ALL') || (rowBrand === activeBrand);
-        const matchSearch = modelText.indexOf(filter) > -1;
+
+        // TÌM XUYÊN TAB KHI CÓ TỪ KHÓA TÌM KIẾM
+        let matchBrand = (filter.length > 0) ? true : (rowBrand === activeBrand);
+        let matchSearch = (filter.length === 0) ? true : (modelText.indexOf(filter) > -1);
 
         if (matchBrand && matchSearch) {
           row.style.display = '';
@@ -848,7 +1368,7 @@
     function openAddModal() {
       editTargetId = null;
       document.getElementById('modalTitle').innerHTML = 'Thêm máy đã test';
-      document.getElementById('inputBrand').value = (activeBrand !== 'ALL') ? activeBrand : 'SAMSUNG';
+      document.getElementById('inputBrand').value = activeBrand || 'OPPO';
       document.getElementById('inputModel').value = '';
       document.getElementById('inputBit').value = '';
       document.getElementById('inputVer').value = '';
@@ -868,7 +1388,7 @@
 
       editTargetId = id;
       document.getElementById('modalTitle').innerHTML = 'CHỈNH SỬA THÔNG TIN';
-      document.getElementById('inputBrand').value = item.brand || 'KHAC';
+      document.getElementById('inputBrand').value = item.brand || 'OPPO';
       document.getElementById('inputModel').value = item.model || '';
       document.getElementById('inputBit').value = (item.bit === '-') ? '' : (item.bit || '');
       document.getElementById('inputVer').value = (item.ver === '-') ? '' : (item.ver || '');
@@ -946,7 +1466,6 @@
       if (event.target === document.getElementById('dataModal')) closeModal();
     };
 
-    // Tải dữ liệu trực tiếp từ Firebase
     fetchOnlineData();
   </script>
 </body>
