@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DANH SÁCH MÁY ĐÃ TEST</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --border: #1f2937;
+      --border-light: #374151;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --primary: #3b82f6;
+      --primary-glow: rgba(59, 130, 246, 0.25);
+      
+      --badge-ok-bg: rgba(16, 185, 129, 0.15);
+      --badge-ok-border: rgba(16, 185, 129, 0.35);
+      --badge-ok-text: #34d399;
+
+      --badge-fail-bg: rgba(239, 68, 68, 0.15);
+      --badge-fail-border: rgba(239, 68, 68, 0.35);
+      --badge-fail-text: #ff3333;
+
+      --badge-bit-bg: #1e293b;
+      --badge-bit-text: #93c5fd;
+
+      /* Hiệu ứng chọn dòng: chuyển sang MÀU XANH LÁ */
+      --row-selected-bg: rgba(34, 197, 94, 0.22);
+      --row-selected-border: #22c55e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 32px 16px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+    }
+
+    /* Header Banner */
+    .header-card {
+      background: linear-gradient(135deg, #1e1b4b 0%, #172554 50%, #0f172a 100%);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      border-radius: 18px;
+      padding: 26px 30px;
+      margin-bottom: 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .title-area h1 {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .title-area h1 .logo-badge {
+      background: linear-gradient(135deg, #ef4444, #f97316);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .title-area p.slogan {
+      color: #facc15;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-top: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Khối thông tin bên phải header */
+    .header-right-info {
+      text-align: right;
+      z-index: 1;
+    }
+
+    .header-right-info h2 {
+      font-size: 16px;
+      font-weight: 800;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 6px;
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+    }
+
+    .header-right-info p.services {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #facc15;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 768px) {
+      .header-right-info {
+        text-align: left;
+        margin-top: 10px;
+        border-top: 1px dashed rgba(255, 255, 255, 0.15);
+        padding-top: 12px;
+        width: 100%;
+      }
+    }
+
+    /* Brand Filter Tabs */
+    @keyframes tabPulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7); }
+      50% { transform: scale(1.04); box-shadow: 0 0 14px 4px rgba(244, 63, 94, 0.5); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7); }
+    }
+
+    .brand-tabs-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .brand-tab {
+      background: #111827;
+      border: 1px solid var(--border-light);
+      color: #94a3b8;
+      padding: 9px 18px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 800;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-tab:hover {
+      background: #1e293b;
+      color: #f1f5f9;
+      border-color: #475569;
+    }
+
+    /* Khi tab được chọn: TÔ NỀN HỒNG & NHÁY */
+    .brand-tab.active {
+      background: linear-gradient(135deg, #fb7185, #e11d48) !important;
+      color: #ffffff !important;
+      border-color: #fda4af !important;
+      animation: tabPulse 0.45s ease-out;
+      box-shadow: 0 4px 16px rgba(225, 29, 72, 0.5) !important;
+    }
+
+    /* Controls Bar */
+    .controls-wrapper {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 22px;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .search-container-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      max-width: 580px;
+    }
+
+    .search-title-label {
+      color: #facc15;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      max-width: 460px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 16px;
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      background: #0d131f;
+      border: 1.5px solid var(--border-light);
+      border-radius: 10px;
+      padding: 11px 14px 11px 40px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+      background: #111827;
+    }
+
+    .search-input::placeholder {
+      text-transform: none;
+      font-weight: 500;
+    }
+
+    .btn-add-new {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 11px 18px;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+      white-space: nowrap;
+    }
+
+    .btn-add-new:hover {
+      background: linear-gradient(135deg, #059669, #047857);
+      transform: translateY(-1px);
+    }
+
+    /* Table */
+    .table-wrapper {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    thead th {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 13px 16px;
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      border-bottom: 1px solid var(--border-light);
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #1a2234;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    tbody tr:hover:not(.selected-row) {
+      background-color: rgba(59, 130, 246, 0.05);
+    }
+
+    /* Bấm vào dòng chuyển sang MÀU XANH LÁ */
+    tbody tr.selected-row {
+      background-color: var(--row-selected-bg) !important;
+      outline: 2px solid var(--row-selected-border);
+      outline-offset: -2px;
+    }
+
+    td {
+      padding: 12px 16px;
+      vertical-align: middle;
+      font-weight: 600;
+    }
+
+    /* TÊN MÁY VÀ VER MÁY MẶC ĐỊNH MÀU TRẮNG */
+    .model-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 14.5px;
+      color: #ffffff !important;
+      transition: color 0.15s ease;
+    }
+
+    .version-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #ffffff !important;
+      transition: color 0.15s ease;
+    }
+
+    /* Máy nào SỊT: Hiện chữ MÀU VÀNG, NỀN ĐEN */
+    tr.is-fail {
+      background-color: #000000 !important;
+    }
+
+    tr.is-fail td,
+    tr.is-fail .model-name,
+    tr.is-fail .version-code,
+    tr.is-fail .chipset-tag,
+    tr.is-fail .extra-note {
+      color: #facc15 !important;
+      font-weight: 800;
+    }
+
+    tr.is-fail .bit-tag {
+      border-color: #facc15 !important;
+      color: #facc15 !important;
+      background: #18181b !important;
+    }
+
+    tr.is-fail .status-fail {
+      background: rgba(250, 204, 21, 0.15) !important;
+      border-color: rgba(250, 204, 21, 0.4) !important;
+      color: #facc15 !important;
+    }
+
+    .bit-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      padding: 3px 7px;
+      border-radius: 5px;
+      background: var(--badge-bit-bg);
+      color: var(--badge-bit-text);
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      border: 1px solid rgba(147, 197, 253, 0.2);
+    }
+
+    .extra-note {
+      color: #f472b6;
+      font-weight: 700;
+      font-size: 12px;
+      background: rgba(244, 114, 182, 0.12);
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-left: 6px;
+      display: inline-block;
+    }
+
+    .chipset-tag {
+      color: #cbd5e1;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .chipset-tag.exynos { color: #93c5fd; }
+    .chipset-tag.mtk { color: #fdba74; }
+    .chipset-tag.qualcomm { color: #86efac; }
+    .chipset-tag.spd { color: #e879f9; }
+
+    /* Badges */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+
+    .status-ok {
+      background: var(--badge-ok-bg);
+      border: 1px solid var(--badge-ok-border);
+      color: var(--badge-ok-text);
+    }
+
+    .status-fail {
+      background: var(--badge-fail-bg);
+      border: 1px solid var(--badge-fail-border);
+      color: #ff2222;
+    }
+
+    .video-link {
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    /* Action Buttons */
+    .actions-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-action {
+      outline: none;
+      cursor: pointer;
+      padding: 5px 10px;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    /* Nút Sửa: Viền xanh, nền tối, icon bút chì, chữ xanh */
+    .btn-edit {
+      background: #161f30;
+      color: #60a5fa;
+      border: 1px solid #2d4263;
+    }
+    .btn-edit:hover {
+      background: #1e2e4a;
+      border-color: #3b82f6;
+    }
+
+    /* Nút Xóa: Viền đỏ sẫm, nền tối, icon thùng rác xám, chữ đỏ */
+    .btn-delete {
+      background: #24161b;
+      color: #f87171;
+      border: 1px solid #4a2128;
+    }
+    .btn-delete:hover {
+      background: #361b22;
+      border-color: #ef4444;
+    }
+
+    .empty-state {
+      padding: 44px 16px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      display: none;
+    }
+
+    .empty-state span {
+      display: block;
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    /* Dòng thống kê dưới cùng */
+    .bottom-stats-bar {
+      margin-top: 18px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px 18px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .stats-info {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .stats-info span {
+      color: #facc15;
+      font-weight: 800;
+    }
+
+    /* Modal Form */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      padding: 16px;
+    }
+
+    .modal-content {
+      background: var(--card-bg);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      width: 100%;
+      max-width: 520px;
+      padding: 24px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    /* Tiêu đề modal: Thêm máy đã test (chữ màu đỏ tươi, nổi bật trên nền đen) */
+    .modal-header h3 {
+      font-size: 19px;
+      color: #ff2222;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 12px rgba(255, 34, 34, 0.35);
+    }
+
+    .close-modal {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .col-30 {
+      flex: 0 0 calc(30% - 6px);
+      width: calc(30% - 6px);
+    }
+
+    .col-70 {
+      flex: 0 0 calc(70% - 6px);
+      width: calc(70% - 6px);
+    }
+
+    .form-group label, .form-col label {
+      display: block;
+      font-size: 13px;
+      color: #facc15;
+      margin-bottom: 6px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-control {
+      width: 100%;
+      background: #0d131f;
+      border: 1.5px solid var(--border-light);
+      border-radius: 8px;
+      padding: 9px 12px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s ease;
+      text-transform: uppercase;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn-save {
+      background: #2563eb;
+      color: #fff;
+      padding: 9px 18px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 13.5px;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    .btn-save:hover {
+      background: #1d4ed8;
+    }
+
+    .btn-cancel {
+      background: #1f2937;
+      color: var(--text-muted);
+      padding: 9px 18px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 13.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+
+    .btn-cancel:hover {
+      background: #374151;
+      color: #fff;
+    }
+
+    footer {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 13px;
+      color: #64748b;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header-card">
+      <div class="title-area">
+        <h1>
+          DANH SÁCH MÁY ĐÃ TEST
+          <span class="logo-badge">QUYNH BUP BE</span>
+        </h1>
+        <p class="slogan">ĐỊA CHỈ ĐÁNG TIN CẬY CỦA MỌI MÁY TRỘM CẮP , NHẶT ĐƯỢC</p>
+      </div>
+      <div class="header-right-info">
+        <h2>TRUNG TÂM GIẢI MÃ ĐTDĐ NAM SÁCH - TP HẢI PHÒNG 2</h2>
+        <p class="services">MỞ KHÓA ICLOUD - MỞ MẠNG - NẠP TIẾNG VIỆT - FIX VOTE...</p>
+      </div>
+    </div>
+
+    <!-- Thanh phân chia theo Hãng -->
+    <div class="brand-tabs-wrapper">
+      <button class="brand-tab active" onclick="setBrandFilter('ALL', this)">TẤT CẢ</button>
+      <button class="brand-tab" onclick="setBrandFilter('SAMSUNG', this)">SAMSUNG</button>
+      <button class="brand-tab" onclick="setBrandFilter('OPPO', this)">OPPO</button>
+      <button class="brand-tab" onclick="setBrandFilter('VIVO', this)">VIVO</button>
+      <button class="brand-tab" onclick="setBrandFilter('XIAOMI', this)">XIAOMI</button>
+      <button class="brand-tab" onclick="setBrandFilter('KHAC', this)">HÃNG KHÁC</button>
+    </div>
+
+    <!-- Controls / Search / Nút Thêm Mới -->
+    <div class="controls-wrapper">
+      <div class="search-container-left">
+        <span class="search-title-label">TÌM KIẾM</span>
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="searchInput" 
+            class="search-input" 
+            placeholder="TÌM THEO TÊN MÁY (VD: M336K, A165, A546...)" 
+            onkeyup="applyFilter()"
+            autocomplete="off"
+          >
+        </div>
+      </div>
+      <button class="btn-add-new" onclick="openAddModal()">
+        THÊM MỚI
+      </button>
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrapper">
+      <div class="table-scroll">
+        <table id="frpTable">
+          <thead>
+            <tr>
+              <th style="width: 15%;">TÊN MÁY</th>
+              <th style="width: 8%; text-align: center;">BIT</th>
+              <th style="width: 35%;">VER MÁY</th>
+              <th style="width: 17%;">CHIPSET</th>
+              <th style="width: 11%; text-align: center;">ĐÃ TEST</th>
+              <th style="width: 14%; text-align: center;">THAO TÁC</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Dữ liệu được nạp động từ LocalStorage -->
+          </tbody>
+        </table>
+        
+        <div id="noResults" class="empty-state">
+          <span>🔎</span>
+          KHÔNG TÌM THẤY MÁY NÀO PHÙ HỢP!
+        </div>
+      </div>
+    </div>
+
+    <!-- Dòng thống kê hiển thị ở dưới cùng -->
+    <div class="bottom-stats-bar">
+      <div class="stats-info">
+        HIỂN THỊ: <span id="visibleCount">0</span> / <span id="totalCount">0</span> DÒNG
+      </div>
+    </div>
+
+    <footer>
+      DỰ ÁN LƯU TRỮ VÀ TRA CỨU NHANH TRÊN GITHUB PAGES • DỮ LIỆU ĐƯỢC TỰ ĐỘNG LƯU TRÊN MÁY BẠN (LOCALSTORAGE)
+    </footer>
+  </div>
+
+  <!-- Modal Thêm Mới / Sửa -->
+  <div id="dataModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Thêm máy đã test</h3>
+        <button class="close-modal" onclick="closeModal()">&times;</button>
+      </div>
+      
+      <!-- Hãng sản xuất -->
+      <div class="form-group">
+        <label>HÃNG SẢN XUẤT:</label>
+        <select id="inputBrand" class="form-control">
+          <option value="SAMSUNG">SAMSUNG</option>
+          <option value="OPPO">OPPO</option>
+          <option value="VIVO">VIVO</option>
+          <option value="XIAOMI">XIAOMI</option>
+          <option value="KHAC">HÃNG KHÁC</option>
+        </select>
+      </div>
+
+      <!-- Tên máy -->
+      <div class="form-group">
+        <label>TÊN MÁY:</label>
+        <input type="text" id="inputModel" class="form-control" placeholder="VÍ DỤ: RENO 8, REDMI NOTE 12, S23...">
+      </div>
+
+      <!-- Hàng 1: BIT + VER MÁY -->
+      <div class="form-row">
+        <div class="form-col col-30">
+          <label>BIT:</label>
+          <input type="text" id="inputBit" class="form-control" placeholder="1, 5, E...">
+        </div>
+        <div class="form-col col-70">
+          <label>VER MÁY:</label>
+          <input type="text" id="inputVer" class="form-control" placeholder="MÃ PHIÊN BẢN PHẦN MỀM">
+        </div>
+      </div>
+
+      <!-- Hàng 2: CHIPSET + ĐÃ TEST -->
+      <div class="form-row">
+        <div class="form-col col-70">
+          <label>CHIPSET:</label>
+          <select id="inputChip" class="form-control">
+            <option value="EXYNOS">EXYNOS</option>
+            <option value="MTK">MTK</option>
+            <option value="QUALCOMM">QUALCOMM</option>
+            <option value="SPD">SPD</option>
+          </select>
+        </div>
+        <div class="form-col col-30">
+          <label>ĐÃ TEST:</label>
+          <select id="inputStatus" class="form-control">
+            <option value="OK">OK</option>
+            <option value="SỊT">SỊT</option>
+            <option value="-">-</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeModal()">HỦY</button>
+        <button class="btn-save" onclick="handleSaveData()">LƯU LẠI</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Dữ liệu ban đầu mặc định
+    const DEFAULT_DATA = [
+      { id: "1", brand: "SAMSUNG", model: "M336K", bit: "E", ver: "M336KKSSEGZB2", chip: "EXYNOS", status: "OK" },
+      { id: "2", brand: "SAMSUNG", model: "A346E", bit: "E", ver: "A346EXXSEEZC7", chip: "MTK", status: "SỊT" },
+      { id: "3", brand: "SAMSUNG", model: "A165N", bit: "5", ver: "A165NKSS5CZA1", chip: "MTK", status: "OK" },
+      { id: "4", brand: "SAMSUNG", model: "M325FV", bit: "C", ver: "M325FVXXSCDYD2", chip: "MTK", status: "SỊT" },
+      { id: "5", brand: "SAMSUNG", model: "A165F", bit: "A", ver: "A165FXXSADZF2", chip: "MTK", status: "SỊT" },
+      { id: "6", brand: "SAMSUNG", model: "A076B", bit: "4", ver: "https://www.youtube.com/watch?v=uzVnNHNyhPY", chip: "MTK", status: "OK", isLink: true },
+      { id: "7", brand: "SAMSUNG", model: "A176B", bit: "5", ver: "A176BXXS5BZBE", chip: "EXYNOS", status: "OK" },
+      { id: "8", brand: "SAMSUNG", model: "A27 - A37 - A57", bit: "ALL", ver: "VER NÀO CŨNG SỊT", chip: "EXYNOS", status: "SỊT" },
+      { id: "9", brand: "SAMSUNG", model: "A135F", bit: "5", ver: "U6 TRỞ LÊN OK", chip: "EXYNOS", status: "OK" },
+      { id: "10", brand: "SAMSUNG", model: "A546E", bit: "C", ver: "A546EXXUCDYDB (CAO HƠN MỰC SAM)", chip: "EXYNOS", status: "OK" },
+      { id: "11", brand: "SAMSUNG", model: "G998B", bit: "J", ver: "G998BXXSJHZA6", chip: "EXYNOS", status: "OK" },
+      { id: "12", brand: "SAMSUNG", model: "A266B", bit: "9", ver: "A266BXXS9BZD4 (BIT B SỊT)", chip: "EXYNOS", status: "OK" },
+      { id: "13", brand: "SAMSUNG", model: "A047F", bit: "F", ver: "-", chip: "-", status: "OK" },
+      { id: "14", brand: "SAMSUNG", model: "A566B", bit: "A", ver: "A566BXXSABZD2", chip: "1580 (LỖI WIPE)", status: "OK" },
+      { id: "15", brand: "SAMSUNG", model: "A145F", bit: "E", ver: "A145FXXSEDZF1", chip: "EXYNOS", status: "OK" },
+      { id: "16", brand: "SAMSUNG", model: "A536B", bit: "M", ver: "A536BXXSMGZE1 (1UI8)", chip: "EXYNOS", status: "OK" },
+      { id: "17", brand: "SAMSUNG", model: "G985F", bit: "S", ver: "G985FXXSNHYB", chip: "EXYNOS", status: "OK" },
+      { id: "18", brand: "SAMSUNG", model: "A175F", bit: "3", ver: "U3 ĐỖ LẠI OK - CAO HƠN BỎ", chip: "MTK", status: "-" },
+      { id: "19", brand: "SAMSUNG", model: "S926N", bit: "-", ver: "-", chip: "EXYNOS", status: "OK" },
+      { id: "20", brand: "SAMSUNG", model: "S731B", bit: "9", ver: "-", chip: "EXYNOS", status: "OK" },
+      { id: "21", brand: "SAMSUNG", model: "A366N", bit: "-", ver: "QUALCOMM", chip: "QUALCOMM", status: "-" }
+    ];
+
+    const STORAGE_KEY = "frp_tested_devices_db";
+
+    let deviceList = [];
+    let activeBrand = 'ALL';
+    let editTargetId = null;
+
+    // Tải dữ liệu từ LocalStorage khi khởi chạy
+    function loadStorage() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          deviceList = JSON.parse(saved);
+        } catch (e) {
+          deviceList = [...DEFAULT_DATA];
+          saveStorage();
+        }
+      } else {
+        deviceList = [...DEFAULT_DATA];
+        saveStorage();
+      }
+      renderTable();
+    }
+
+    // Lưu danh sách vào LocalStorage
+    function saveStorage() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(deviceList));
+    }
+
+    // Vẽ toàn bộ bảng từ mảng deviceList
+    function renderTable() {
+      const tbody = document.getElementById('tableBody');
+      tbody.innerHTML = '';
+
+      deviceList.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.setAttribute('data-id', item.id);
+        tr.setAttribute('data-brand', item.brand || 'KHAC');
+        
+        const isFail = item.status && (item.status.includes('SỊT') || item.status.includes('SIT'));
+        if (isFail) {
+          tr.classList.add('is-fail');
+        }
+
+        tr.setAttribute('onclick', 'selectRow(this, event)');
+
+        let chipClass = 'exynos';
+        const upperChip = (item.chip || '').toUpperCase();
+        if (upperChip.includes('MTK')) chipClass = 'mtk';
+        else if (upperChip.includes('QUALCOMM')) chipClass = 'qualcomm';
+        else if (upperChip.includes('SPD')) chipClass = 'spd';
+
+        let statusHtml = '-';
+        if (item.status === 'OK') {
+          statusHtml = '<span class="status-badge status-ok">● OK</span>';
+        } else if (isFail) {
+          statusHtml = '<span class="status-badge status-fail">✕ SỊT</span>';
+        }
+
+        let verContent = item.ver || '-';
+        if (item.isLink || (item.ver && item.ver.startsWith('http'))) {
+          verContent = `<a class="video-link" href="${item.ver}" target="_blank" rel="noopener">▶ XEM VIDEO HD</a>`;
+        }
+
+        tr.innerHTML = `
+          <td class="model-name">${item.model || '-'}</td>
+          <td style="text-align: center;"><span class="bit-tag">${item.bit || '-'}</span></td>
+          <td class="version-code">${verContent}</td>
+          <td><span class="chipset-tag ${chipClass}">${item.chip || '-'}</span></td>
+          <td style="text-align: center;">${statusHtml}</td>
+          <td style="text-align: center;">
+            <div class="actions-group">
+              <button class="btn-action btn-edit" onclick="openEditModalById('${item.id}', event)"><span>✏️</span> Sửa</button>
+              <button class="btn-action btn-delete" onclick="deleteRowById('${item.id}', event)"><span>🗑️</span> Xóa</button>
+            </div>
+          </td>
+        `;
+
+        tbody.appendChild(tr);
+      });
+
+      applyFilter();
+    }
+
+    // Hiệu ứng chọn dòng
+    function selectRow(tr, event) {
+      if (event && (event.target.closest('.btn-action') || event.target.closest('a'))) {
+        return;
+      }
+      const allRows = document.querySelectorAll('#tableBody tr');
+      allRows.forEach(r => r.classList.remove('selected-row'));
+      tr.classList.add('selected-row');
+    }
+
+    // Chọn tab hãng
+    function setBrandFilter(brand, btn) {
+      activeBrand = brand;
+      document.querySelectorAll('.brand-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilter();
+    }
+
+    // Áp dụng bộ lọc tìm kiếm và hãng
+    function applyFilter() {
+      const filter = document.getElementById('searchInput').value.toUpperCase().trim();
+      const rows = document.querySelectorAll('#tableBody tr');
+      let visible = 0;
+      let total = 0;
+
+      rows.forEach(row => {
+        total++;
+        const rowBrand = row.getAttribute('data-brand') || 'KHAC';
+        const modelTd = row.getElementsByTagName('td')[0];
+        const modelText = modelTd ? (modelTd.textContent || modelTd.innerText).toUpperCase() : '';
+
+        const matchBrand = (activeBrand === 'ALL') || (rowBrand === activeBrand);
+        const matchSearch = modelText.indexOf(filter) > -1;
+
+        if (matchBrand && matchSearch) {
+          row.style.display = '';
+          visible++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      document.getElementById('visibleCount').textContent = visible;
+      document.getElementById('totalCount').textContent = total;
+      
+      const noResults = document.getElementById('noResults');
+      if (visible === 0 && total > 0) {
+        noResults.style.display = 'block';
+      } else {
+        noResults.style.display = 'none';
+      }
+    }
+
+    // Xóa dòng theo ID và lưu LocalStorage
+    function deleteRowById(id, event) {
+      if (event) event.stopPropagation();
+      const item = deviceList.find(d => d.id === id);
+      const name = item ? item.model : "máy này";
+
+      if (confirm(`BẠN CÓ CHẮC CHẮN MUỐN XÓA DÒNG MÁY "${name}" KHÔNG?`)) {
+        deviceList = deviceList.filter(d => d.id !== id);
+        saveStorage();
+        renderTable();
+      }
+    }
+
+    // Mở modal Thêm Mới
+    function openAddModal() {
+      editTargetId = null;
+      document.getElementById('modalTitle').innerHTML = 'Thêm máy đã test';
+      document.getElementById('inputBrand').value = (activeBrand !== 'ALL') ? activeBrand : 'SAMSUNG';
+      document.getElementById('inputModel').value = '';
+      document.getElementById('inputBit').value = '';
+      document.getElementById('inputVer').value = '';
+      document.getElementById('inputChip').value = 'EXYNOS';
+      document.getElementById('inputStatus').value = 'OK';
+      document.getElementById('dataModal').style.display = 'flex';
+    }
+
+    // Mở modal Sửa theo ID
+    function openEditModalById(id, event) {
+      if (event) event.stopPropagation();
+      const item = deviceList.find(d => d.id === id);
+      if (!item) return;
+
+      editTargetId = id;
+      document.getElementById('modalTitle').innerHTML = 'CHỈNH SỬA THÔNG TIN';
+      document.getElementById('inputBrand').value = item.brand || 'KHAC';
+      document.getElementById('inputModel').value = item.model || '';
+      document.getElementById('inputBit').value = (item.bit === '-') ? '' : item.bit;
+      document.getElementById('inputVer').value = (item.ver === '-') ? '' : item.ver;
+      
+      const upperChip = (item.chip || '').toUpperCase();
+      const chipSelect = document.getElementById('inputChip');
+      if (upperChip.includes('QUALCOMM')) {
+        chipSelect.value = 'QUALCOMM';
+      } else if (upperChip.includes('MTK')) {
+        chipSelect.value = 'MTK';
+      } else if (upperChip.includes('SPD')) {
+        chipSelect.value = 'SPD';
+      } else {
+        chipSelect.value = 'EXYNOS';
+      }
+
+      const statusSelect = document.getElementById('inputStatus');
+      if (item.status === 'OK') {
+        statusSelect.value = 'OK';
+      } else if (item.status && (item.status.includes('SỊT') || item.status.includes('SIT'))) {
+        statusSelect.value = 'SỊT';
+      } else {
+        statusSelect.value = '-';
+      }
+
+      document.getElementById('dataModal').style.display = 'flex';
+    }
+
+    // Đóng modal
+    function closeModal() {
+      document.getElementById('dataModal').style.display = 'none';
+      editTargetId = null;
+    }
+
+    // Lưu dữ liệu vào mảng và LocalStorage
+    function handleSaveData() {
+      const brand = document.getElementById('inputBrand').value.toUpperCase();
+      const model = (document.getElementById('inputModel').value.trim() || 'CHƯA ĐẶT TÊN').toUpperCase();
+      const bit = (document.getElementById('inputBit').value.trim() || '-').toUpperCase();
+      const ver = (document.getElementById('inputVer').value.trim() || '-').toUpperCase();
+      const chip = document.getElementById('inputChip').value.toUpperCase();
+      const status = document.getElementById('inputStatus').value.toUpperCase();
+
+      if (editTargetId) {
+        // Cập nhật máy cũ
+        const index = deviceList.findIndex(d => d.id === editTargetId);
+        if (index !== -1) {
+          deviceList[index] = {
+            ...deviceList[index],
+            brand,
+            model,
+            bit,
+            ver,
+            chip,
+            status
+          };
+        }
+      } else {
+        // Tạo máy mới thêm lên đầu danh sách
+        const newItem = {
+          id: Date.now().toString(),
+          brand,
+          model,
+          bit,
+          ver,
+          chip,
+          status
+        };
+        deviceList.unshift(newItem);
+      }
+
+      saveStorage();
+      closeModal();
+      renderTable();
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('dataModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+
+    // Khởi chạy khi load trang
+    window.addEventListener('DOMContentLoaded', loadStorage);
+  </script>
+
+</body>
+</html>
