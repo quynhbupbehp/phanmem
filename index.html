@@ -29,6 +29,7 @@
       --badge-bit-bg: #1e293b;
       --badge-bit-text: #93c5fd;
 
+      /* Hiệu ứng chọn dòng: chuyển sang MÀU XANH LÁ */
       --row-selected-bg: rgba(34, 197, 94, 0.22);
       --row-selected-border: #22c55e;
     }
@@ -55,6 +56,7 @@
       max-width: 1240px;
     }
 
+    /* Header Banner */
     .header-card {
       background: linear-gradient(135deg, #1e1b4b 0%, #172554 50%, #0f172a 100%);
       border: 1px solid rgba(99, 102, 241, 0.25);
@@ -102,6 +104,7 @@
       letter-spacing: 0.5px;
     }
 
+    /* Khối thông tin bên phải header */
     .header-right-info {
       text-align: right;
       z-index: 1;
@@ -135,6 +138,7 @@
       }
     }
 
+    /* Brand Filter Tabs */
     @keyframes tabPulse {
       0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7); }
       50% { transform: scale(1.04); box-shadow: 0 0 14px 4px rgba(244, 63, 94, 0.5); }
@@ -171,6 +175,7 @@
       border-color: #475569;
     }
 
+    /* Khi tab được chọn: TÔ NỀN HỒNG & NHÁY */
     .brand-tab.active {
       background: linear-gradient(135deg, #fb7185, #e11d48) !important;
       color: #ffffff !important;
@@ -179,6 +184,7 @@
       box-shadow: 0 4px 16px rgba(225, 29, 72, 0.5) !important;
     }
 
+    /* Controls Bar */
     .controls-wrapper {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -190,6 +196,7 @@
       justify-content: space-between;
       gap: 16px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      flex-wrap: wrap;
     }
 
     .search-container-left {
@@ -240,6 +247,7 @@
       transition: all 0.2s ease;
     }
 
+    /* Nút xóa tìm kiếm màu đỏ ở góc phải */
     .btn-clear-search {
       position: absolute;
       right: 10px;
@@ -272,6 +280,12 @@
       background: #111827;
     }
 
+    .btn-group-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     .btn-add-new {
       background: linear-gradient(135deg, #10b981, #059669);
       color: #fff;
@@ -295,6 +309,7 @@
       transform: translateY(-1px);
     }
 
+    /* Table */
     .table-wrapper {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -337,6 +352,7 @@
       background-color: rgba(59, 130, 246, 0.05);
     }
 
+    /* Bấm vào dòng chuyển sang MÀU XANH LÁ */
     tbody tr.selected-row {
       background-color: var(--row-selected-bg) !important;
       outline: 2px solid var(--row-selected-border);
@@ -350,6 +366,7 @@
       white-space: nowrap;
     }
 
+    /* TÊN MÁY VÀ VER MÁY MẶC ĐỊNH MÀU TRẮNG */
     .model-name {
       font-family: 'JetBrains Mono', monospace;
       font-weight: 800;
@@ -365,6 +382,7 @@
       transition: color 0.15s ease;
     }
 
+    /* Máy nào SỊT: Hiện chữ MÀU VÀNG, NỀN ĐEN */
     tr.is-fail {
       background-color: #000000 !important;
     }
@@ -428,6 +446,7 @@
     .chipset-tag.qualcomm { color: #86efac; }
     .chipset-tag.spd { color: #e879f9; }
 
+    /* Ô hiển thị Link Tải File */
     .link-cell-wrapper {
       display: inline-flex;
       align-items: center;
@@ -478,6 +497,7 @@
       transform: translateY(-1px);
     }
 
+    /* Ô hiển thị Mật Khẩu kèm nút Ẩn/Hiện */
     .password-cell-wrapper {
       display: inline-flex;
       align-items: center;
@@ -515,6 +535,7 @@
       border-color: var(--primary);
     }
 
+    /* Badges */
     .status-badge {
       display: inline-flex;
       align-items: center;
@@ -550,6 +571,7 @@
       border: 1px solid rgba(56, 189, 248, 0.25);
     }
 
+    /* Action Buttons */
     .actions-group {
       display: inline-flex;
       align-items: center;
@@ -593,6 +615,7 @@
       border-color: #ef4444;
     }
 
+    /* Nút Nhân bản */
     .btn-clone {
       background: #1e1b4b;
       color: #c084fc;
@@ -618,15 +641,18 @@
       margin-bottom: 8px;
     }
 
+    /* Dòng thống kê dưới cùng */
     .bottom-stats-bar {
       margin-top: 18px;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
-      padding: 10px 18px;
+      padding: 12px 18px;
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 12px;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .stats-info {
@@ -641,6 +667,31 @@
       font-weight: 800;
     }
 
+    .backup-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-backup {
+      background: #1e293b;
+      border: 1px solid var(--border-light);
+      color: #cbd5e1;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+    }
+
+    .btn-backup:hover {
+      background: #334155;
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* Modal Form */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -782,6 +833,7 @@
       color: #fff;
     }
 
+    /* Toast thông báo */
     #copyToast {
       position: fixed;
       bottom: 24px;
@@ -811,6 +863,7 @@
 <body>
 
   <div class="container">
+    <!-- Header -->
     <div class="header-card">
       <div class="title-area">
         <h1>
@@ -825,6 +878,7 @@
       </div>
     </div>
 
+    <!-- Thanh phân chia theo Hãng -->
     <div class="brand-tabs-wrapper">
       <button class="brand-tab active" onclick="setBrandFilter('ALL', this)">TẤT CẢ</button>
       <button class="brand-tab" onclick="setBrandFilter('SAMSUNG', this)">SAMSUNG</button>
@@ -834,6 +888,7 @@
       <button class="brand-tab" onclick="setBrandFilter('KHAC', this)">HÃNG KHÁC</button>
     </div>
 
+    <!-- Controls / Search / Nút Thêm Mới -->
     <div class="controls-wrapper">
       <div class="search-container-left">
         <span class="search-title-label">TÌM KIẾM</span>
@@ -849,16 +904,23 @@
           <button id="clearSearchBtn" class="btn-clear-search" onclick="clearSearch()" title="Xóa tìm kiếm">✕</button>
         </div>
       </div>
-      <button class="btn-add-new" onclick="openAddModal()">
-        THÊM MỚI
-      </button>
+      <div class="btn-group-right">
+        <button class="btn-add-new" onclick="openAddModal()">
+          THÊM MỚI
+        </button>
+      </div>
     </div>
 
+    <!-- Table -->
     <div class="table-wrapper">
       <div class="table-scroll">
         <table id="frpTable">
-          <thead id="tableHead"></thead>
-          <tbody id="tableBody"></tbody>
+          <thead id="tableHead">
+            <!-- Header động thay đổi theo Tab -->
+          </thead>
+          <tbody id="tableBody">
+            <!-- Dữ liệu được nạp động từ LocalStorage -->
+          </tbody>
         </table>
         
         <div id="noResults" class="empty-state">
@@ -868,15 +930,23 @@
       </div>
     </div>
 
+    <!-- Dòng thống kê hiển thị ở dưới cùng & Nút Sao lưu -->
     <div class="bottom-stats-bar">
       <div class="stats-info">
         HIỂN THỊ: <span id="visibleCount">0</span> / <span id="totalCount">0</span> DÒNG
       </div>
+      <div class="backup-buttons">
+        <button class="btn-backup" onclick="exportBackupData()" title="Tải file dữ liệu về máy">💾 XUẤT SAO LƯU</button>
+        <button class="btn-backup" onclick="document.getElementById('importFileInput').click()" title="Nạp file dữ liệu đã lưu">📂 NHẬP SAO LƯU</button>
+        <input type="file" id="importFileInput" accept=".json" style="display: none;" onchange="importBackupData(event)">
+      </div>
     </div>
   </div>
 
-  <div id="copyToast">ĐÃ SAO CHÉP LINK THÀNH CÔNG!</div>
+  <!-- Toast Thông báo -->
+  <div id="copyToast">ĐÃ THAO TÁC THÀNH CÔNG!</div>
 
+  <!-- Modal Thêm Mới / Sửa -->
   <div id="dataModal" class="modal-overlay">
     <div class="modal-content">
       <div class="modal-header">
@@ -884,6 +954,7 @@
         <button class="close-modal" onclick="closeModal()">&times;</button>
       </div>
       
+      <!-- Hãng sản xuất -->
       <div class="form-group">
         <label>HÃNG SẢN XUẤT:</label>
         <select id="inputBrand" class="form-control" onchange="toggleModalFields()">
@@ -895,11 +966,13 @@
         </select>
       </div>
 
+      <!-- Tên máy -->
       <div class="form-group">
         <label>TÊN MÁY:</label>
         <input type="text" id="inputModel" class="form-control" placeholder="VÍ DỤ: RENO 8, REDMI NOTE 12, S23...">
       </div>
 
+      <!-- Trường dành riêng cho SAMSUNG: BIT + VER MÁY -->
       <div id="samsungFields" class="form-row">
         <div class="form-col col-30">
           <label>BIT:</label>
@@ -911,11 +984,13 @@
         </div>
       </div>
 
+      <!-- Trường dành riêng cho OPPO, VIVO, XIAOMI, HÃNG KHÁC: LINK TẢI FILE -->
       <div id="nonSamsungFields" class="form-group" style="display: none;">
         <label>LINK TẢI FILE:</label>
         <input type="text" id="inputLink" class="form-control no-uppercase" placeholder="Dán link tải file (Google Drive, MediaFire, Mega, Web...)">
       </div>
 
+      <!-- Hàng dành riêng cho SAMSUNG: CHIPSET + ĐÃ TEST -->
       <div id="samsungChipRow" class="form-row">
         <div class="form-col col-70">
           <label>CHIPSET:</label>
@@ -936,6 +1011,7 @@
         </div>
       </div>
 
+      <!-- Hàng dành riêng cho các HÃNG KHÁC SAMSUNG: MẬT KHẨU + ĐÃ TEST -->
       <div id="nonSamsungPassRow" class="form-row" style="display: none;">
         <div class="form-col col-70">
           <label>MẬT KHẨU:</label>
@@ -959,6 +1035,7 @@
   </div>
 
   <script>
+    // Dữ liệu ban đầu mặc định
     const DEFAULT_DATA = [
       { id: "1", brand: "SAMSUNG", model: "M336K", bit: "E", ver: "M336KKSSEGZB2", chip: "EXYNOS", status: "OK", link: "", password: "" },
       { id: "2", brand: "SAMSUNG", model: "A346E", bit: "E", ver: "A346EXXSEEZC7", chip: "MTK", status: "SỊT", link: "", password: "" },
@@ -991,11 +1068,37 @@
 
     let passwordVisibilityMap = {};
 
+    // Hàm kiểm tra khả năng lưu trữ của LocalStorage
+    function isLocalStorageAvailable() {
+      try {
+        const testKey = "__test_storage__";
+        localStorage.setItem(testKey, testKey);
+        localStorage.removeItem(testKey);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    // Tải dữ liệu từ LocalStorage khi khởi chạy
     function loadStorage() {
+      if (!isLocalStorageAvailable()) {
+        alert("CẢNH BÁO: Trình duyệt của bạn đang chặn LocalStorage (hoặc đang mở chế độ Ẩn danh). Dữ liệu sẽ không thể lưu lại khi bạn tắt hoặc F5 trang web!");
+        deviceList = [...DEFAULT_DATA];
+        renderTable();
+        return;
+      }
+
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         try {
-          deviceList = JSON.parse(saved);
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            deviceList = parsed;
+          } else {
+            deviceList = [...DEFAULT_DATA];
+            saveStorage();
+          }
         } catch (e) {
           deviceList = [...DEFAULT_DATA];
           saveStorage();
@@ -1007,14 +1110,60 @@
       renderTable();
     }
 
+    // Lưu danh sách vào LocalStorage
     function saveStorage() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(deviceList));
+      if (isLocalStorageAvailable()) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(deviceList));
+        } catch (e) {
+          console.error("Lỗi khi lưu vào LocalStorage:", e);
+        }
+      }
     }
 
+    // Xuất file dự phòng (.json)
+    function exportBackupData() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(deviceList, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `DANH_SACH_MAY_TEST_${new Date().toISOString().slice(0, 10)}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast("ĐÃ TẢI FILE SAO LƯU THÀNH CÔNG!");
+    }
+
+    // Nhập file dự phòng (.json)
+    function importBackupData(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (Array.isArray(imported)) {
+            deviceList = imported;
+            saveStorage();
+            renderTable();
+            showToast("ĐÃ NẠP DỮ LIỆU SAO LƯU THÀNH CÔNG!");
+          } else {
+            alert("File không đúng định dạng dữ liệu danh sách!");
+          }
+        } catch (err) {
+          alert("Lỗi khi đọc file sao lưu: " + err.message);
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = ''; // Reset input
+    }
+
+    // Kiểm tra tab hiện tại có phải là dạng hiển thị LINK & MẬT KHẨU không
     function isLinkTab(brand) {
       return brand === 'OPPO' || brand === 'VIVO' || brand === 'XIAOMI' || brand === 'KHAC';
     }
 
+    // Vẽ Header theo Tab (Trừ Samsung: Kéo dãn TÊN MÁY, đảm bảo mỗi cột 1 hàng duy nhất)
     function renderTableHeader() {
       const thead = document.getElementById('tableHead');
       if (isLinkTab(activeBrand)) {
@@ -1041,12 +1190,25 @@
       }
     }
 
+    // Toggle ẩn / hiện mật khẩu của 1 dòng
     function togglePasswordVisibility(id, event) {
       if (event) event.stopPropagation();
       passwordVisibilityMap[id] = !passwordVisibilityMap[id];
       renderTable();
     }
 
+    // Tránh lỗi gãy chuỗi ký tự đặc biệt
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    // Vẽ toàn bộ bảng từ mảng deviceList
     function renderTable() {
       renderTableHeader();
       const tbody = document.getElementById('tableBody');
@@ -1073,13 +1235,17 @@
           statusHtml = '<span class="status-badge status-fail">✕ SỊT</span>';
         }
 
+        const safeModel = escapeHtml(item.model || '-');
+        const safeBit = escapeHtml(item.bit || '-');
+        const safeChip = escapeHtml(item.chip || '-');
+        const rawUrl = item.link || item.ver || '';
+
         if (isCurrentLinkView) {
-          const fileUrl = item.link || item.ver || '';
           let linkCellHtml = `
             <div class="link-cell-wrapper">
               <span class="link-label-text">LINK TẢI FILE</span>
-              <button class="btn-link-action btn-copy" onclick="copyFileLink('${encodeURIComponent(fileUrl)}', event)">📋 SAO CHÉP</button>
-              <button class="btn-link-action btn-open" onclick="openFileLink('${encodeURIComponent(fileUrl)}', event)">🌐 MỞ WEB</button>
+              <button class="btn-link-action btn-copy" onclick="copyFileLink('${encodeURIComponent(rawUrl)}', event)">📋 SAO CHÉP</button>
+              <button class="btn-link-action btn-open" onclick="openFileLink('${encodeURIComponent(rawUrl)}', event)">🌐 MỞ WEB</button>
             </div>
           `;
 
@@ -1087,7 +1253,7 @@
           const isVisible = Boolean(passwordVisibilityMap[item.id]);
           let displayPwd = '-';
           if (rawPwd !== '-') {
-            displayPwd = isVisible ? rawPwd : '••••••••';
+            displayPwd = isVisible ? escapeHtml(rawPwd) : '••••••••';
           }
           
           let pwdCellHtml = `
@@ -1102,7 +1268,7 @@
           `;
 
           tr.innerHTML = `
-            <td class="model-name">${item.model || '-'}</td>
+            <td class="model-name">${safeModel}</td>
             <td>${linkCellHtml}</td>
             <td>${pwdCellHtml}</td>
             <td style="text-align: center;">${statusHtml}</td>
@@ -1121,16 +1287,16 @@
           else if (upperChip.includes('QUALCOMM')) chipClass = 'qualcomm';
           else if (upperChip.includes('SPD')) chipClass = 'spd';
 
-          let verContent = item.ver || '-';
+          let verContent = escapeHtml(item.ver || '-');
           if (item.isLink || (item.ver && item.ver.startsWith('http'))) {
-            verContent = `<a class="video-link" href="${item.ver}" target="_blank" rel="noopener">▶ XEM VIDEO HD</a>`;
+            verContent = `<a class="video-link" href="${escapeHtml(item.ver)}" target="_blank" rel="noopener">▶ XEM VIDEO HD</a>`;
           }
 
           tr.innerHTML = `
-            <td class="model-name">${item.model || '-'}</td>
-            <td style="text-align: center;"><span class="bit-tag">${item.bit || '-'}</span></td>
+            <td class="model-name">${safeModel}</td>
+            <td style="text-align: center;"><span class="bit-tag">${safeBit}</span></td>
             <td class="version-code">${verContent}</td>
-            <td><span class="chipset-tag ${chipClass}">${item.chip || '-'}</span></td>
+            <td><span class="chipset-tag ${chipClass}">${safeChip}</span></td>
             <td style="text-align: center;">${statusHtml}</td>
             <td style="text-align: center;">
               <div class="actions-group">
@@ -1148,6 +1314,7 @@
       applyFilter();
     }
 
+    // Sao chép link vào Clipboard
     function copyFileLink(encodedUrl, event) {
       if (event) event.stopPropagation();
       const url = decodeURIComponent(encodedUrl);
@@ -1168,6 +1335,7 @@
       });
     }
 
+    // Mở web link
     function openFileLink(encodedUrl, event) {
       if (event) event.stopPropagation();
       const url = decodeURIComponent(encodedUrl);
@@ -1179,6 +1347,7 @@
       window.open(finalUrl, '_blank', 'noopener,noreferrer');
     }
 
+    // Hiển thị Toast
     function showToast(msg) {
       const toast = document.getElementById('copyToast');
       toast.innerText = msg;
@@ -1188,6 +1357,7 @@
       }, 2000);
     }
 
+    // Hiệu ứng chọn dòng
     function selectRow(tr, event) {
       if (event && (event.target.closest('.btn-action') || event.target.closest('a') || event.target.closest('.btn-link-action') || event.target.closest('.btn-toggle-pwd'))) {
         return;
@@ -1197,6 +1367,7 @@
       tr.classList.add('selected-row');
     }
 
+    // Chọn tab hãng
     function setBrandFilter(brand, btn) {
       activeBrand = brand;
       document.querySelectorAll('.brand-tab').forEach(t => t.classList.remove('active'));
@@ -1204,6 +1375,7 @@
       renderTable();
     }
 
+    // Xử lý khi nhập tìm kiếm: hiện nút xóa nếu có ký tự
     function handleSearchInput() {
       const input = document.getElementById('searchInput');
       const clearBtn = document.getElementById('clearSearchBtn');
@@ -1215,6 +1387,7 @@
       applyFilter();
     }
 
+    // Xóa trắng ô tìm kiếm
     function clearSearch() {
       const input = document.getElementById('searchInput');
       input.value = '';
@@ -1223,6 +1396,7 @@
       applyFilter();
     }
 
+    // Mở popup Nhân Bản: Sao chép toàn bộ dữ liệu máy được chọn
     function openCloneModalById(id, event) {
       if (event) event.stopPropagation();
       const item = deviceList.find(d => d.id === id);
@@ -1257,6 +1431,7 @@
       document.getElementById('dataModal').style.display = 'flex';
     }
 
+    // Áp dụng bộ lọc tìm kiếm
     function applyFilter() {
       const filter = document.getElementById('searchInput').value.toUpperCase().trim();
       const rows = document.querySelectorAll('#tableBody tr');
@@ -1291,6 +1466,7 @@
       }
     }
 
+    // Xóa dòng theo ID và lưu LocalStorage
     function deleteRowById(id, event) {
       if (event) event.stopPropagation();
       const item = deviceList.find(d => d.id === id);
@@ -1301,9 +1477,11 @@
         delete passwordVisibilityMap[id];
         saveStorage();
         renderTable();
+        showToast("ĐÃ XÓA MÁY THÀNH CÔNG!");
       }
     }
 
+    // Bật/tắt trường trong modal tùy theo hãng được chọn
     function toggleModalFields() {
       const brand = document.getElementById('inputBrand').value;
       const samsungFields = document.getElementById('samsungFields');
@@ -1324,6 +1502,7 @@
       }
     }
 
+    // Mở modal Thêm Mới
     function openAddModal() {
       editTargetId = null;
       document.getElementById('modalTitle').innerHTML = 'Thêm máy đã test';
@@ -1343,6 +1522,7 @@
       document.getElementById('dataModal').style.display = 'flex';
     }
 
+    // Mở modal Sửa theo ID
     function openEditModalById(id, event) {
       if (event) event.stopPropagation();
       const item = deviceList.find(d => d.id === id);
@@ -1377,11 +1557,13 @@
       document.getElementById('dataModal').style.display = 'flex';
     }
 
+    // Đóng modal
     function closeModal() {
       document.getElementById('dataModal').style.display = 'none';
       editTargetId = null;
     }
 
+    // Lưu dữ liệu vào mảng và LocalStorage
     function handleSaveData() {
       const brand = document.getElementById('inputBrand').value.toUpperCase();
       const model = (document.getElementById('inputModel').value.trim() || 'CHƯA ĐẶT TÊN').toUpperCase();
@@ -1428,6 +1610,7 @@
       saveStorage();
       closeModal();
       renderTable();
+      showToast("ĐÃ LƯU DỮ LIỆU THÀNH CÔNG VÀO MÁY!");
     }
 
     window.onclick = function(event) {
@@ -1437,7 +1620,8 @@
       }
     };
 
-    window.addEventListener('DOMContentLoaded', loadStorage);
+    // Khởi chạy trực tiếp ngay khi script nạp xong để đảm bảo không bị trễ
+    loadStorage();
   </script>
 
 </body>
