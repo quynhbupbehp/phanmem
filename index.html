@@ -6,7 +6,7 @@
   <title>DANH SÁCH MÁY ĐÃ TEST</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0b0f19;
@@ -29,7 +29,6 @@
       --badge-bit-bg: #1e293b;
       --badge-bit-text: #93c5fd;
 
-      /* Hiệu ứng chọn dòng: chuyển sang MÀU XANH LÁ */
       --row-selected-bg: rgba(34, 197, 94, 0.22);
       --row-selected-border: #22c55e;
     }
@@ -43,7 +42,7 @@
     body {
       background-color: var(--bg);
       color: var(--text);
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       padding: 32px 16px;
       min-height: 100vh;
       display: flex;
@@ -56,12 +55,11 @@
       max-width: 1240px;
     }
 
-    /* Header Banner */
     .header-card {
       background: linear-gradient(135deg, #1e1b4b 0%, #172554 50%, #0f172a 100%);
       border: 1px solid rgba(99, 102, 241, 0.25);
-      border-radius: 18px;
-      padding: 26px 30px;
+      border-radius: 14px;
+      padding: 24px 28px;
       margin-bottom: 22px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       display: flex;
@@ -74,9 +72,8 @@
     }
 
     .title-area h1 {
-      font-size: 25px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
+      font-size: 22px;
+      font-weight: 700;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -87,21 +84,19 @@
     .title-area h1 .logo-badge {
       background: linear-gradient(135deg, #ef4444, #f97316);
       color: #fff;
-      font-size: 13px;
-      font-weight: 800;
+      font-size: 12px;
+      font-weight: 700;
       padding: 4px 10px;
       border-radius: 6px;
-      letter-spacing: 0.8px;
       text-transform: uppercase;
     }
 
     .title-area p.slogan {
       color: #facc15;
-      font-size: 14px;
-      font-weight: 800;
+      font-size: 13px;
+      font-weight: 600;
       text-transform: uppercase;
       margin-top: 6px;
-      letter-spacing: 0.5px;
     }
 
     .header-right-info {
@@ -110,21 +105,18 @@
     }
 
     .header-right-info h2 {
-      font-size: 16px;
-      font-weight: 800;
+      font-size: 15px;
+      font-weight: 700;
       color: #38bdf8;
       text-transform: uppercase;
-      letter-spacing: 0.4px;
       margin-bottom: 6px;
-      text-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
     }
 
     .header-right-info p.services {
-      font-size: 13.5px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 600;
       color: #facc15;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
 
     @media (max-width: 768px) {
@@ -137,35 +129,33 @@
       }
     }
 
-    /* Brand Filter Tabs */
-    @keyframes tabPulse {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7); }
-      50% { transform: scale(1.04); box-shadow: 0 0 14px 4px rgba(244, 63, 94, 0.5); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7); }
-    }
-
     .brand-tabs-wrapper {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
       margin-bottom: 20px;
+      align-items: center;
     }
 
     .brand-tab {
       background: #111827;
       border: 1px solid var(--border-light);
       color: #94a3b8;
-      padding: 9px 18px;
-      border-radius: 10px;
-      font-size: 13.5px;
-      font-weight: 800;
-      cursor: pointer;
-      letter-spacing: 0.5px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: grab;
       text-transform: uppercase;
-      transition: all 0.2s ease;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      user-select: none;
+    }
+
+    .brand-tab:active {
+      cursor: grabbing;
     }
 
     .brand-tab:hover {
@@ -178,22 +168,52 @@
       background: linear-gradient(135deg, #fb7185, #e11d48) !important;
       color: #ffffff !important;
       border-color: #fda4af !important;
-      animation: tabPulse 0.45s ease-out;
-      box-shadow: 0 4px 16px rgba(225, 29, 72, 0.5) !important;
+      box-shadow: 0 4px 14px rgba(225, 29, 72, 0.4) !important;
     }
 
-    /* Controls Bar */
+    .brand-tab.dragging {
+      opacity: 0.4;
+      border: 2px dashed #38bdf8;
+    }
+
+    .brand-tab.drag-over {
+      border-color: #38bdf8;
+      background: #1e293b;
+      transform: scale(1.05);
+    }
+
+    .btn-add-brand {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1.5px dashed #10b981;
+      color: #34d399;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-add-brand:hover {
+      background: rgba(16, 185, 129, 0.3);
+      border-color: #34d399;
+    }
+
     .controls-wrapper {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px 22px;
-      margin-bottom: 22px;
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      flex-wrap: wrap;
     }
 
     .search-container-left {
@@ -202,14 +222,14 @@
       gap: 12px;
       flex: 1;
       max-width: 580px;
+      min-width: 280px;
     }
 
     .search-title-label {
       color: #facc15;
-      font-size: 14px;
-      font-weight: 800;
+      font-size: 13px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
       white-space: nowrap;
       user-select: none;
     }
@@ -226,7 +246,7 @@
       top: 50%;
       transform: translateY(-50%);
       color: var(--text-muted);
-      font-size: 16px;
+      font-size: 14px;
       pointer-events: none;
     }
 
@@ -234,11 +254,11 @@
       width: 100%;
       background: #0d131f;
       border: 1.5px solid var(--border-light);
-      border-radius: 10px;
-      padding: 11px 36px 11px 40px;
+      border-radius: 8px;
+      padding: 9px 36px 9px 38px;
       color: #fff;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 13px;
+      font-weight: 500;
       text-transform: uppercase;
       outline: none;
       transition: all 0.2s ease;
@@ -250,7 +270,6 @@
       background: #111827;
     }
 
-    /* Nút xóa tìm kiếm màu đỏ ở góc phải */
     .btn-clear-search {
       position: absolute;
       right: 10px;
@@ -259,73 +278,97 @@
       background: #dc2626;
       color: #ffffff;
       border: none;
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      font-size: 12px;
-      font-weight: 800;
+      font-size: 11px;
+      font-weight: 700;
       display: none;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 0 8px rgba(220, 38, 38, 0.4);
     }
 
-    .btn-clear-search:hover {
-      background: #ef4444;
-      transform: translateY(-50%) scale(1.1);
+    .controls-right-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-toggle-global-pwd {
+      background: #1e293b;
+      border: 1.5px solid #facc15;
+      color: #facc15 !important;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .btn-toggle-global-pwd:hover {
+      background: #334155;
+      border-color: #fde047;
+      color: #fde047 !important;
     }
 
     .btn-add-new {
       background: linear-gradient(135deg, #10b981, #059669);
       color: #fff;
       border: none;
-      border-radius: 10px;
-      padding: 11px 18px;
-      font-size: 14px;
-      font-weight: 800;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 14.5px;
+      font-weight: 700;
       text-transform: uppercase;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       transition: all 0.2s ease;
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
       white-space: nowrap;
     }
 
     .btn-add-new:hover {
       background: linear-gradient(135deg, #059669, #047857);
-      transform: translateY(-1px);
     }
 
-    /* Table */
     .table-wrapper {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 12px;
+      max-height: 650px;
+      overflow-y: auto;
       overflow-x: auto;
       box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+      position: relative;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      font-size: 14px;
+      font-size: 13.5px;
     }
 
     thead th {
-      background: #1e293b;
-      color: #e2e8f0;
+      background: #3b1d5c;
+      color: #facc15 !important;
       padding: 13px 16px;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: 0.6px;
-      border-bottom: 1px solid var(--border-light);
+      border-bottom: 2px solid #581c87;
       white-space: nowrap;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     tbody tr {
@@ -346,38 +389,24 @@
     }
 
     td {
-      padding: 12px 16px;
+      padding: 11px 16px;
       vertical-align: middle;
-      font-weight: 600;
+      font-weight: 500;
       white-space: nowrap;
     }
 
     .model-name {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 800;
-      font-size: 14.5px;
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      font-size: 14px;
       color: #ffffff !important;
       display: inline-flex;
       align-items: center;
       gap: 8px;
     }
 
-    /* Badge Hãng nhận diện khi tìm kiếm xuyên tab */
-    .brand-badge-inline {
-      font-size: 10.5px;
-      font-weight: 800;
-      padding: 2px 6px;
-      border-radius: 4px;
-      letter-spacing: 0.5px;
-    }
-    .brand-samsung { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); }
-    .brand-oppo { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
-    .brand-vivo { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); }
-    .brand-xiaomi { background: rgba(249, 115, 22, 0.2); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.4); }
-    .brand-khac { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); }
-
     .version-code {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Roboto Mono', monospace;
       font-size: 13px;
       color: #ffffff !important;
     }
@@ -393,7 +422,7 @@
     tr.is-fail .link-label-text,
     tr.is-fail .password-text {
       color: #facc15 !important;
-      font-weight: 800;
+      font-weight: 700;
     }
 
     tr.is-fail .bit-tag {
@@ -412,21 +441,21 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 28px;
-      padding: 3px 7px;
-      border-radius: 5px;
+      min-width: 26px;
+      padding: 2px 6px;
+      border-radius: 4px;
       background: var(--badge-bit-bg);
       color: var(--badge-bit-text);
-      font-weight: 800;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12.5px;
+      font-weight: 700;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 12px;
       border: 1px solid rgba(147, 197, 253, 0.2);
     }
 
     .chipset-tag {
       color: #cbd5e1;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 600;
     }
     .chipset-tag.exynos { color: #93c5fd; }
     .chipset-tag.mtk { color: #fdba74; }
@@ -436,16 +465,15 @@
     .link-cell-wrapper {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      flex-wrap: nowrap;
-      white-space: nowrap;
+      width: 100%;
     }
 
     .link-label-text {
       color: #ffffff;
-      font-weight: 800;
-      font-size: 13.5px;
-      letter-spacing: 0.3px;
+      font-weight: 700;
+      font-size: 13px;
     }
 
     .btn-link-action {
@@ -453,10 +481,10 @@
       outline: none;
       cursor: pointer;
       padding: 4px 8px;
-      font-size: 11.5px;
-      font-weight: 800;
+      font-size: 11px;
+      font-weight: 700;
       text-transform: uppercase;
-      border-radius: 5px;
+      border-radius: 4px;
       transition: all 0.2s ease;
       white-space: nowrap;
     }
@@ -468,8 +496,6 @@
     }
     .btn-copy:hover {
       background: #334155;
-      border-color: #facc15;
-      transform: translateY(-1px);
     }
 
     .btn-open {
@@ -479,56 +505,24 @@
     }
     .btn-open:hover {
       background: rgba(56, 189, 248, 0.25);
-      border-color: #38bdf8;
-      transform: translateY(-1px);
-    }
-
-    .password-cell-wrapper {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: nowrap;
-      white-space: nowrap;
     }
 
     .password-text {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13.5px;
-      font-weight: 700;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
       color: #cbd5e1;
-      letter-spacing: 0.5px;
       text-transform: none;
-    }
-
-    .btn-toggle-pwd {
-      background: #1e293b;
-      border: 1px solid var(--border-light);
-      color: #94a3b8;
-      cursor: pointer;
-      padding: 3px 7px;
-      border-radius: 4px;
-      font-size: 12px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-    }
-
-    .btn-toggle-pwd:hover {
-      background: #334155;
-      color: #fff;
-      border-color: var(--primary);
     }
 
     .status-badge {
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      padding: 4px 10px;
+      padding: 3px 10px;
       border-radius: 20px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.3px;
+      font-size: 11.5px;
+      font-weight: 700;
       text-transform: uppercase;
     }
 
@@ -548,10 +542,10 @@
       color: #38bdf8;
       text-decoration: none;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 600;
       background: rgba(56, 189, 248, 0.1);
       padding: 3px 8px;
-      border-radius: 6px;
+      border-radius: 4px;
       border: 1px solid rgba(56, 189, 248, 0.25);
     }
 
@@ -559,23 +553,21 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      flex-wrap: nowrap;
       white-space: nowrap;
     }
 
     .btn-action {
       outline: none;
       cursor: pointer;
-      padding: 5px 10px;
-      font-size: 13px;
-      font-weight: 700;
-      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 5px;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
       transition: all 0.15s ease;
       text-transform: none;
-      letter-spacing: 0;
     }
 
     .btn-edit {
@@ -585,7 +577,6 @@
     }
     .btn-edit:hover {
       background: #1e2e4a;
-      border-color: #3b82f6;
     }
 
     .btn-delete {
@@ -595,7 +586,6 @@
     }
     .btn-delete:hover {
       background: #361b22;
-      border-color: #ef4444;
     }
 
     .btn-clone {
@@ -605,7 +595,6 @@
     }
     .btn-clone:hover {
       background: #2e1065;
-      border-color: #c084fc;
       color: #ffffff;
     }
 
@@ -613,31 +602,31 @@
       padding: 44px 16px;
       text-align: center;
       color: var(--text-muted);
-      font-size: 14px;
+      font-size: 13.5px;
       display: none;
     }
 
     .bottom-stats-bar {
-      margin-top: 18px;
+      margin-top: 16px;
       display: flex;
       justify-content: flex-end;
       align-items: center;
       padding: 10px 18px;
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 10px;
     }
 
     .stats-info {
-      font-size: 13.5px;
+      font-size: 13px;
       color: var(--text-muted);
-      font-weight: 700;
+      font-weight: 600;
       text-transform: uppercase;
     }
 
     .stats-info span {
       color: #facc15;
-      font-weight: 800;
+      font-weight: 700;
     }
 
     .modal-overlay {
@@ -655,9 +644,9 @@
     .modal-content {
       background: var(--card-bg);
       border: 1px solid var(--border-light);
-      border-radius: 14px;
+      border-radius: 12px;
       width: 100%;
-      max-width: 520px;
+      max-width: 500px;
       padding: 24px;
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
     }
@@ -666,35 +655,34 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       border-bottom: 1px solid var(--border);
       padding-bottom: 12px;
     }
 
     .modal-header h3 {
-      font-size: 19px;
+      font-size: 17px;
       color: #ff2222;
       text-transform: uppercase;
-      font-weight: 800;
-      letter-spacing: 0.5px;
+      font-weight: 700;
     }
 
     .close-modal {
       background: transparent;
       border: none;
       color: var(--text-muted);
-      font-size: 20px;
+      font-size: 18px;
       cursor: pointer;
     }
 
     .form-group {
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .form-row {
       display: flex;
       gap: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .col-30 {
@@ -709,22 +697,21 @@
 
     .form-group label, .form-col label {
       display: block;
-      font-size: 13px;
+      font-size: 12px;
       color: #facc15;
-      margin-bottom: 6px;
-      font-weight: 800;
+      margin-bottom: 5px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
 
     .form-control {
       width: 100%;
       background: #0d131f;
       border: 1.5px solid var(--border-light);
-      border-radius: 8px;
-      padding: 9px 12px;
+      border-radius: 6px;
+      padding: 8px 12px;
       color: #fff;
-      font-size: 14px;
+      font-size: 13px;
       outline: none;
       transition: border-color 0.2s ease;
       text-transform: uppercase;
@@ -742,18 +729,18 @@
       display: flex;
       justify-content: flex-end;
       gap: 10px;
-      margin-top: 20px;
+      margin-top: 18px;
     }
 
     .btn-save {
       background: #2563eb;
       color: #fff;
-      padding: 9px 18px;
-      border-radius: 8px;
+      padding: 8px 16px;
+      border-radius: 6px;
       border: none;
       cursor: pointer;
-      font-weight: 800;
-      font-size: 13.5px;
+      font-weight: 700;
+      font-size: 13px;
       text-transform: uppercase;
     }
 
@@ -764,13 +751,13 @@
     .btn-cancel {
       background: #1f2937;
       color: var(--text-muted);
-      padding: 9px 18px;
-      border-radius: 8px;
+      padding: 8px 16px;
+      border-radius: 6px;
       border: none;
       cursor: pointer;
-      font-size: 13.5px;
+      font-size: 13px;
       text-transform: uppercase;
-      font-weight: 700;
+      font-weight: 600;
     }
 
     .btn-cancel:hover {
@@ -785,12 +772,11 @@
       transform: translateX(-50%) translateY(100px);
       background: #10b981;
       color: #ffffff;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: 800;
-      font-size: 13px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 12.5px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
       z-index: 9999;
       opacity: 0;
@@ -807,7 +793,6 @@
 <body>
 
   <div class="container">
-    <!-- Header -->
     <div class="header-card">
       <div class="title-area">
         <h1>
@@ -822,16 +807,8 @@
       </div>
     </div>
 
-    <!-- Thanh phân chia theo Hãng (Đã bỏ Tab TẤT CẢ, Mặc định chọn OPPO) -->
-    <div class="brand-tabs-wrapper">
-      <button class="brand-tab" onclick="setBrandFilter('SAMSUNG', this)">SAMSUNG</button>
-      <button class="brand-tab active" onclick="setBrandFilter('OPPO', this)">OPPO</button>
-      <button class="brand-tab" onclick="setBrandFilter('VIVO', this)">VIVO</button>
-      <button class="brand-tab" onclick="setBrandFilter('XIAOMI', this)">XIAOMI</button>
-      <button class="brand-tab" onclick="setBrandFilter('KHAC', this)">HÃNG KHÁC</button>
-    </div>
+    <div class="brand-tabs-wrapper" id="brandTabsContainer"></div>
 
-    <!-- Controls / Search / Nút Thêm Mới -->
     <div class="controls-wrapper">
       <div class="search-container-left">
         <span class="search-title-label">TÌM KIẾM</span>
@@ -843,16 +820,21 @@
             class="search-input" 
             oninput="handleSearchInput()"
             autocomplete="off"
+            placeholder="TÌM TRONG TAB HIỆN TẠI..."
           >
           <button id="clearSearchBtn" class="btn-clear-search" onclick="clearSearch()" title="Xóa tìm kiếm">✕</button>
         </div>
       </div>
-      <button class="btn-add-new" onclick="openAddModal()">
-        THÊM MỚI
-      </button>
+      <div class="controls-right-group">
+        <button id="globalPwdBtn" class="btn-toggle-global-pwd" onclick="toggleGlobalPasswordVisibility()">
+          👁️ HIỆN
+        </button>
+        <button class="btn-add-new" onclick="openAddModal()">
+          THÊM MỚI
+        </button>
+      </div>
     </div>
 
-    <!-- Table -->
     <div class="table-wrapper">
       <table id="frpTable">
         <thead id="tableHead"></thead>
@@ -864,7 +846,6 @@
       </div>
     </div>
 
-    <!-- Dòng thống kê -->
     <div class="bottom-stats-bar">
       <div class="stats-info">
         HIỂN THỊ: <span id="visibleCount">0</span> / <span id="totalCount">0</span> DÒNG
@@ -874,7 +855,6 @@
 
   <div id="copyToast">ĐÃ ĐỒNG BỘ THÀNH CÔNG!</div>
 
-  <!-- Modal Thêm Mới / Sửa -->
   <div id="dataModal" class="modal-overlay">
     <div class="modal-content">
       <div class="modal-header">
@@ -884,13 +864,7 @@
       
       <div class="form-group">
         <label>HÃNG SẢN XUẤT:</label>
-        <select id="inputBrand" class="form-control" onchange="toggleModalFields()">
-          <option value="OPPO">OPPO</option>
-          <option value="SAMSUNG">SAMSUNG</option>
-          <option value="VIVO">VIVO</option>
-          <option value="XIAOMI">XIAOMI</option>
-          <option value="KHAC">HÃNG KHÁC</option>
-        </select>
+        <input type="text" id="inputBrand" class="form-control" placeholder="GÕ TÊN HÃNG (VÍ DỤ: HUAWEI, REALME...)" oninput="toggleModalFields()">
       </div>
 
       <div class="form-group">
@@ -936,8 +910,8 @@
 
       <div id="nonSamsungPassRow" class="form-row">
         <div class="form-col col-70">
-          <label>MẬT KHẨU:</label>
-          <input type="text" id="inputPassword" class="form-control no-uppercase" placeholder="Mật khẩu file (nếu có)">
+          <label>MK / TOOL:</label>
+          <input type="text" id="inputPassword" class="form-control no-uppercase" placeholder="Mật khẩu hoặc tool (nếu có)">
         </div>
         <div class="form-col col-30">
           <label>ĐÃ TEST:</label>
@@ -984,14 +958,17 @@
     ];
 
     let deviceList = [];
-    let activeBrand = 'OPPO'; // MẶC ĐỊNH CHỌN TAB OPPO
+    let activeBrand = 'VOLTE';
+    let brandOrder = ['SAMSUNG', 'VOLTE', 'FIX BANK', 'OPPO', 'VIVO', 'XIAOMI', 'ZTE'];
     let editTargetId = null;
-    let passwordVisibilityMap = {};
+    let globalPasswordVisible = false;
+    let draggedBrand = null;
 
     async function fetchOnlineData() {
       try {
         const res = await fetch(`${FIREBASE_DB_URL}/devices.json`);
-        const data = await res.json();
+        let data = await res.json();
+        
         if (data && Array.isArray(data)) {
           deviceList = data;
         } else if (data && typeof data === 'object') {
@@ -1000,10 +977,31 @@
           deviceList = [...INITIAL_SAMPLES];
           await syncOnlineData();
         }
+
+        // Tự động sao chép dữ liệu tab OPPO sang VOLTE nếu tab VOLTE chưa có dữ liệu nào
+        let hasVolte = deviceList.some(item => (item.brand || '').toUpperCase().trim() === 'VOLTE');
+        let oppoItems = deviceList.filter(item => (item.brand || '').toUpperCase().trim() === 'OPPO');
+        
+        if (!hasVolte && oppoItems.length > 0) {
+          oppoItems.forEach(item => {
+            deviceList.push({
+              ...item,
+              id: 'volte_' + item.id + '_' + Date.now(),
+              brand: 'VOLTE'
+            });
+          });
+          await syncOnlineData();
+        }
+
+        const savedOrder = localStorage.getItem('brandOrder');
+        if (savedOrder) {
+          try { brandOrder = JSON.parse(savedOrder); } catch(e){}
+        }
       } catch (err) {
         console.error("Lỗi kết nối Firebase:", err);
         deviceList = [...INITIAL_SAMPLES];
       }
+      renderBrandTabs();
       renderTable();
     }
 
@@ -1020,24 +1018,125 @@
       }
     }
 
-    function isLinkTab(brand) {
-      return brand === 'OPPO' || brand === 'VIVO' || brand === 'XIAOMI' || brand === 'KHAC';
+    function getAvailableBrands() {
+      const set = new Set(brandOrder);
+      deviceList.forEach(item => {
+        if (item.brand) {
+          let b = item.brand.toUpperCase().trim();
+          set.add(b);
+        }
+      });
+      return Array.from(set);
     }
 
-    // Header tự động thích ứng: Nếu đang tìm kiếm thì hiển thị cột tổng quát
-    function renderTableHeader(isSearching = false) {
-      const thead = document.getElementById('tableHead');
-      if (isSearching) {
-        thead.innerHTML = `
-          <tr>
-            <th style="min-width: 250px; width: 35%;">TÊN MÁY (TẤT CẢ HÃNG)</th>
-            <th style="white-space: nowrap; width: 25%;">LINK / VER MÁY</th>
-            <th style="white-space: nowrap; width: 16%;">MẬT KHẨU / CHIPSET</th>
-            <th style="white-space: nowrap; width: 10%; text-align: center;">ĐÃ TEST</th>
-            <th style="white-space: nowrap; width: 14%; text-align: center;">THAO TÁC</th>
-          </tr>
+    function renderBrandTabs() {
+      const container = document.getElementById('brandTabsContainer');
+      const brands = getAvailableBrands();
+      
+      if (!brands.includes(activeBrand) && brands.length > 0) {
+        activeBrand = brands[0];
+      }
+
+      let html = '';
+      brands.forEach(b => {
+        const isActive = (b === activeBrand) ? 'active' : '';
+        html += `
+          <button class="brand-tab ${isActive}" 
+                  draggable="true" 
+                  ondragstart="handleDragStart(event, '${b}')" 
+                  ondragover="handleDragOver(event)" 
+                  ondragenter="handleDragEnter(event, '${b}')" 
+                  ondragleave="handleDragLeave(event)" 
+                  ondrop="handleDrop(event, '${b}')" 
+                  ondragend="handleDragEnd(event)"
+                  onclick="setBrandFilter('${b}', this)">
+            ${b}
+          </button>
         `;
-      } else if (activeBrand === 'SAMSUNG') {
+      });
+
+      html += `<button class="btn-add-brand" onclick="addNewBrandPrompt()" title="Thêm hãng mới">+</button>`;
+      container.innerHTML = html;
+    }
+
+    function handleDragStart(e, brand) {
+      draggedBrand = brand;
+      e.target.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    }
+
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+    }
+
+    function handleDragEnter(e, brand) {
+      e.preventDefault();
+      if (brand !== draggedBrand) {
+        e.currentTarget.classList.add('drag-over');
+      }
+    }
+
+    function handleDragLeave(e) {
+      e.currentTarget.classList.remove('drag-over');
+    }
+
+    function handleDrop(e, targetBrand) {
+      e.preventDefault();
+      e.currentTarget.classList.remove('drag-over');
+      if (!draggedBrand || draggedBrand === targetBrand) return;
+
+      let brands = getAvailableBrands();
+      const fromIdx = brands.indexOf(draggedBrand);
+      const toIdx = brands.indexOf(targetBrand);
+
+      if (fromIdx > -1 && toIdx > -1) {
+        brands.splice(fromIdx, 1);
+        brands.splice(toIdx, 0, draggedBrand);
+        brandOrder = brands;
+        localStorage.setItem('brandOrder', JSON.stringify(brandOrder));
+        renderBrandTabs();
+      }
+    }
+
+    function handleDragEnd(e) {
+      draggedBrand = null;
+      document.querySelectorAll('.brand-tab').forEach(el => {
+        el.classList.remove('dragging', 'drag-over');
+      });
+    }
+
+    function addNewBrandPrompt() {
+      let newBrand = prompt("NHẬP TÊN HÃNG MỚI (VÍ DỤ: REALME, HUAWEI, ZTE...):");
+      if (!newBrand) return;
+      newBrand = newBrand.trim().toUpperCase();
+      if (!newBrand) return;
+
+      if (!brandOrder.includes(newBrand)) {
+        brandOrder.push(newBrand);
+        localStorage.setItem('brandOrder', JSON.stringify(brandOrder));
+      }
+
+      activeBrand = newBrand;
+      renderBrandTabs();
+      renderTable();
+      openAddModal();
+      document.getElementById('inputBrand').value = newBrand;
+      toggleModalFields();
+    }
+
+    function isSamsungBrand(brand) {
+      return (brand || '').toUpperCase().includes('SAMSUNG');
+    }
+
+    function renderTableHeader() {
+      const thead = document.getElementById('tableHead');
+      const globalBtn = document.getElementById('globalPwdBtn');
+      if (globalBtn) {
+        globalBtn.style.display = isSamsungBrand(activeBrand) ? 'none' : 'inline-flex';
+      }
+
+      if (isSamsungBrand(activeBrand)) {
         thead.innerHTML = `
           <tr>
             <th style="width: 15%;">TÊN MÁY</th>
@@ -1051,9 +1150,9 @@
       } else {
         thead.innerHTML = `
           <tr>
-            <th style="min-width: 240px; width: 35%;">TÊN MÁY</th>
-            <th style="white-space: nowrap; width: 25%;">LINK</th>
-            <th style="white-space: nowrap; width: 16%;">MẬT KHẨU</th>
+            <th style="width: 35%; text-align: center;">TÊN MÁY</th>
+            <th style="white-space: nowrap; width: 25%; text-align: center;">LINK</th>
+            <th style="white-space: nowrap; width: 16%; text-align: center;">MK / TOOL</th>
             <th style="white-space: nowrap; width: 10%; text-align: center;">ĐÃ TEST</th>
             <th style="white-space: nowrap; width: 14%; text-align: center;">THAO TÁC</th>
           </tr>
@@ -1061,9 +1160,18 @@
       }
     }
 
-    function togglePasswordVisibility(id, event) {
-      if (event) event.stopPropagation();
-      passwordVisibilityMap[id] = !passwordVisibilityMap[id];
+    function toggleGlobalPasswordVisibility() {
+      globalPasswordVisible = !globalPasswordVisible;
+      const btn = document.getElementById('globalPwdBtn');
+      if (globalPasswordVisible) {
+        btn.innerHTML = '👁️‍🗨️ ẨN';
+        btn.style.borderColor = '#38bdf8';
+        btn.style.color = '#38bdf8';
+      } else {
+        btn.innerHTML = '👁️ HIỆN';
+        btn.style.borderColor = '#facc15';
+        btn.style.color = '#facc15';
+      }
       renderTable();
     }
 
@@ -1078,17 +1186,16 @@
     }
 
     function renderTable() {
-      const searchVal = document.getElementById('searchInput') ? document.getElementById('searchInput').value.trim() : '';
-      const isSearching = searchVal.length > 0;
-
-      renderTableHeader(isSearching);
+      renderTableHeader();
       const tbody = document.getElementById('tableBody');
       tbody.innerHTML = '';
 
       deviceList.forEach(item => {
+        const itemBrand = (item.brand || '').toUpperCase().trim();
+        if (itemBrand !== activeBrand) return;
+
         const tr = document.createElement('tr');
         tr.setAttribute('data-id', item.id);
-        const itemBrand = (item.brand || 'KHAC').toUpperCase();
         tr.setAttribute('data-brand', itemBrand);
         
         const isFail = item.status && (item.status.includes('SỊT') || item.status.includes('SIT'));
@@ -1102,71 +1209,9 @@
 
         const safeModel = escapeHtml(item.model || '-');
         const rawUrl = item.link || item.ver || '';
+        const isSam = isSamsungBrand(itemBrand);
 
-        let brandBadgeHtml = '';
-        if (isSearching) {
-          let bClass = 'brand-khac';
-          if (itemBrand.includes('SAMSUNG')) bClass = 'brand-samsung';
-          else if (itemBrand.includes('OPPO')) bClass = 'brand-oppo';
-          else if (itemBrand.includes('VIVO')) bClass = 'brand-vivo';
-          else if (itemBrand.includes('XIAOMI')) bClass = 'brand-xiaomi';
-          brandBadgeHtml = `<span class="brand-badge-inline ${bClass}">${itemBrand}</span>`;
-        }
-
-        if (isSearching) {
-          let col2Html = '-';
-          let col3Html = '-';
-
-          if (itemBrand === 'SAMSUNG') {
-            col2Html = (item.isLink || (item.ver && item.ver.startsWith('http'))) ? 
-              `<a class="video-link" href="${escapeHtml(item.ver)}" target="_blank" rel="noopener">▶ XEM VIDEO HD</a>` : 
-              `<span class="version-code">${escapeHtml(item.ver || '-')}</span>`;
-            
-            let chipClass = 'exynos';
-            const upperChip = (item.chip || '').toUpperCase();
-            if (upperChip.includes('MTK')) chipClass = 'mtk';
-            else if (upperChip.includes('QUALCOMM')) chipClass = 'qualcomm';
-            else if (upperChip.includes('SPD')) chipClass = 'spd';
-
-            col3Html = `<span class="bit-tag" style="margin-right: 6px;">${escapeHtml(item.bit || '-')}</span><span class="chipset-tag ${chipClass}">${escapeHtml(item.chip || '-')}</span>`;
-          } else {
-            col2Html = `
-              <div class="link-cell-wrapper">
-                <span class="link-label-text">LINK TẢI FILE</span>
-                <button class="btn-link-action btn-copy" onclick="copyFileLink('${encodeURIComponent(rawUrl)}', event)">📋 SAO CHÉP</button>
-                <button class="btn-link-action btn-open" onclick="openFileLink('${encodeURIComponent(rawUrl)}', event)">🌐 MỞ WEB</button>
-              </div>
-            `;
-            const rawPwd = item.password || '-';
-            const isVisible = Boolean(passwordVisibilityMap[item.id]);
-            let displayPwd = '-';
-            if (rawPwd !== '-') displayPwd = isVisible ? escapeHtml(rawPwd) : '••••••••';
-            col3Html = `
-              <div class="password-cell-wrapper">
-                <span class="password-text">${displayPwd}</span>
-                ${rawPwd !== '-' ? `
-                  <button class="btn-toggle-pwd" onclick="togglePasswordVisibility('${item.id}', event)">
-                    ${isVisible ? '👁️‍🗨️ ẨN' : '👁️ HIỆN'}
-                  </button>
-                ` : ''}
-              </div>
-            `;
-          }
-
-          tr.innerHTML = `
-            <td class="model-name">${brandBadgeHtml} ${safeModel}</td>
-            <td>${col2Html}</td>
-            <td>${col3Html}</td>
-            <td style="text-align: center;">${statusHtml}</td>
-            <td style="text-align: center;">
-              <div class="actions-group">
-                <button class="btn-action btn-clone" onclick="openCloneModalById('${item.id}', event)"><span>📑</span> Nhân bản</button>
-                <button class="btn-action btn-edit" onclick="openEditModalById('${item.id}', event)"><span>✏️</span> Sửa</button>
-                <button class="btn-action btn-delete" onclick="deleteRowById('${item.id}', event)"><span>🗑️</span> Xóa</button>
-              </div>
-            </td>
-          `;
-        } else if (activeBrand === 'SAMSUNG') {
+        if (isSam) {
           let chipClass = 'exynos';
           const upperChip = (item.chip || '').toUpperCase();
           if (upperChip.includes('MTK')) chipClass = 'mtk';
@@ -1202,27 +1247,17 @@
           `;
 
           const rawPwd = item.password || '-';
-          const isVisible = Boolean(passwordVisibilityMap[item.id]);
           let displayPwd = '-';
           if (rawPwd !== '-') {
-            displayPwd = isVisible ? escapeHtml(rawPwd) : '••••••••';
+            displayPwd = globalPasswordVisible ? escapeHtml(rawPwd) : '••••••••';
           }
           
-          let pwdCellHtml = `
-            <div class="password-cell-wrapper">
-              <span class="password-text">${displayPwd}</span>
-              ${rawPwd !== '-' ? `
-                <button class="btn-toggle-pwd" onclick="togglePasswordVisibility('${item.id}', event)">
-                  ${isVisible ? '👁️‍🗨️ ẨN' : '👁️ HIỆN'}
-                </button>
-              ` : ''}
-            </div>
-          `;
+          let pwdCellHtml = `<span class="password-text">${displayPwd}</span>`;
 
           tr.innerHTML = `
-            <td class="model-name">${safeModel}</td>
-            <td>${linkCellHtml}</td>
-            <td>${pwdCellHtml}</td>
+            <td style="text-align: center;"><span class="model-name" style="justify-content: center; width: 100%;">${safeModel}</span></td>
+            <td style="text-align: center;">${linkCellHtml}</td>
+            <td style="text-align: center;">${pwdCellHtml}</td>
             <td style="text-align: center;">${statusHtml}</td>
             <td style="text-align: center;">
               <div class="actions-group">
@@ -1262,7 +1297,7 @@
     }
 
     function selectRow(tr, event) {
-      if (event && (event.target.closest('.btn-action') || event.target.closest('a') || event.target.closest('.btn-link-action') || event.target.closest('.btn-toggle-pwd'))) return;
+      if (event && (event.target.closest('.btn-action') || event.target.closest('a') || event.target.closest('.btn-link-action'))) return;
       document.querySelectorAll('#tableBody tr').forEach(r => r.classList.remove('selected-row'));
       tr.classList.add('selected-row');
     }
@@ -1270,7 +1305,9 @@
     function setBrandFilter(brand, btn) {
       activeBrand = brand;
       document.querySelectorAll('.brand-tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
+      if (btn) btn.classList.add('active');
+      document.getElementById('searchInput').value = '';
+      document.getElementById('clearSearchBtn').style.display = 'none';
       renderTable();
     }
 
@@ -1278,7 +1315,7 @@
       const input = document.getElementById('searchInput');
       const hasText = input.value.trim().length > 0;
       document.getElementById('clearSearchBtn').style.display = hasText ? 'flex' : 'none';
-      renderTable();
+      applyFilter();
     }
 
     function clearSearch() {
@@ -1286,7 +1323,7 @@
       input.value = '';
       document.getElementById('clearSearchBtn').style.display = 'none';
       input.focus();
-      renderTable();
+      applyFilter();
     }
 
     function openCloneModalById(id, event) {
@@ -1296,7 +1333,7 @@
 
       editTargetId = null;
       document.getElementById('modalTitle').innerHTML = 'Nhân bản máy đã test';
-      document.getElementById('inputBrand').value = item.brand || 'OPPO';
+      document.getElementById('inputBrand').value = item.brand || activeBrand;
       document.getElementById('inputModel').value = item.model ? (item.model + ' (BẢN SAO)') : '';
       document.getElementById('inputBit').value = (item.bit === '-') ? '' : (item.bit || '');
       document.getElementById('inputVer').value = (item.ver === '-') ? '' : (item.ver || '');
@@ -1322,17 +1359,22 @@
       const filter = document.getElementById('searchInput').value.toUpperCase().trim();
       const rows = document.querySelectorAll('#tableBody tr');
       let visible = 0;
+      let totalCurrentTab = 0;
 
       rows.forEach(row => {
-        const rowBrand = row.getAttribute('data-brand') || 'KHAC';
+        const rowBrand = row.getAttribute('data-brand') || '';
+        if (rowBrand !== activeBrand) {
+          row.style.display = 'none';
+          return;
+        }
+
+        totalCurrentTab++;
         const modelTd = row.getElementsByTagName('td')[0];
         const modelText = modelTd ? (modelTd.textContent || modelTd.innerText).toUpperCase() : '';
 
-        // TÌM XUYÊN TAB KHI CÓ TỪ KHÓA TÌM KIẾM
-        let matchBrand = (filter.length > 0) ? true : (rowBrand === activeBrand);
         let matchSearch = (filter.length === 0) ? true : (modelText.indexOf(filter) > -1);
 
-        if (matchBrand && matchSearch) {
+        if (matchSearch) {
           row.style.display = '';
           visible++;
         } else {
@@ -1341,8 +1383,8 @@
       });
 
       document.getElementById('visibleCount').textContent = visible;
-      document.getElementById('totalCount').textContent = deviceList.length;
-      document.getElementById('noResults').style.display = (visible === 0 && deviceList.length > 0) ? 'block' : 'none';
+      document.getElementById('totalCount').textContent = totalCurrentTab;
+      document.getElementById('noResults').style.display = (visible === 0 && totalCurrentTab > 0) ? 'block' : 'none';
     }
 
     async function deleteRowById(id, event) {
@@ -1350,7 +1392,7 @@
       const item = deviceList.find(d => d.id === id);
       if (confirm(`XÓA DÒNG MÁY "${item ? item.model : ''}"?`)) {
         deviceList = deviceList.filter(d => d.id !== id);
-        delete passwordVisibilityMap[id];
+        renderBrandTabs();
         renderTable();
         await syncOnlineData();
       }
@@ -1358,7 +1400,7 @@
 
     function toggleModalFields() {
       const brand = document.getElementById('inputBrand').value;
-      const isSam = brand === 'SAMSUNG';
+      const isSam = isSamsungBrand(brand);
       document.getElementById('samsungFields').style.display = isSam ? 'flex' : 'none';
       document.getElementById('nonSamsungFields').style.display = isSam ? 'none' : 'block';
       document.getElementById('samsungChipRow').style.display = isSam ? 'flex' : 'none';
@@ -1368,7 +1410,7 @@
     function openAddModal() {
       editTargetId = null;
       document.getElementById('modalTitle').innerHTML = 'Thêm máy đã test';
-      document.getElementById('inputBrand').value = activeBrand || 'OPPO';
+      document.getElementById('inputBrand').value = activeBrand || 'VOLTE';
       document.getElementById('inputModel').value = '';
       document.getElementById('inputBit').value = '';
       document.getElementById('inputVer').value = '';
@@ -1388,7 +1430,7 @@
 
       editTargetId = id;
       document.getElementById('modalTitle').innerHTML = 'CHỈNH SỬA THÔNG TIN';
-      document.getElementById('inputBrand').value = item.brand || 'OPPO';
+      document.getElementById('inputBrand').value = item.brand || activeBrand;
       document.getElementById('inputModel').value = item.model || '';
       document.getElementById('inputBit').value = (item.bit === '-') ? '' : (item.bit || '');
       document.getElementById('inputVer').value = (item.ver === '-') ? '' : (item.ver || '');
@@ -1416,16 +1458,21 @@
     }
 
     async function handleSaveData() {
-      const brand = document.getElementById('inputBrand').value.toUpperCase();
+      const brand = document.getElementById('inputBrand').value.toUpperCase().trim() || 'KHÁC';
       const model = (document.getElementById('inputModel').value.trim() || 'CHƯA ĐẶT TÊN').toUpperCase();
       const bit = (document.getElementById('inputBit').value.trim() || '-').toUpperCase();
       const ver = (document.getElementById('inputVer').value.trim() || '-').toUpperCase();
       const link = document.getElementById('inputLink').value.trim();
       const password = document.getElementById('inputPassword').value.trim() || '-';
       const chip = document.getElementById('inputChip').value.toUpperCase();
-      const status = (brand === 'SAMSUNG') ? 
+      const status = isSamsungBrand(brand) ? 
         document.getElementById('inputStatus').value.toUpperCase() : 
         document.getElementById('inputStatusNonSam').value.toUpperCase();
+
+      if (!brandOrder.includes(brand)) {
+        brandOrder.push(brand);
+        localStorage.setItem('brandOrder', JSON.stringify(brandOrder));
+      }
 
       if (editTargetId) {
         const index = deviceList.findIndex(d => d.id === editTargetId);
@@ -1434,11 +1481,11 @@
             ...deviceList[index],
             brand,
             model,
-            bit: (brand === 'SAMSUNG') ? bit : '-',
-            ver: (brand === 'SAMSUNG') ? ver : (link || '-'),
-            link: (brand !== 'SAMSUNG') ? link : (deviceList[index].link || ''),
-            password: (brand !== 'SAMSUNG') ? password : '-',
-            chip: (brand === 'SAMSUNG') ? chip : '-',
+            bit: isSamsungBrand(brand) ? bit : '-',
+            ver: isSamsungBrand(brand) ? ver : (link || '-'),
+            link: !isSamsungBrand(brand) ? link : (deviceList[index].link || ''),
+            password: !isSamsungBrand(brand) ? password : '-',
+            chip: isSamsungBrand(brand) ? chip : '-',
             status
           };
         }
@@ -1447,17 +1494,19 @@
           id: Date.now().toString(),
           brand,
           model,
-          bit: (brand === 'SAMSUNG') ? bit : '-',
-          ver: (brand === 'SAMSUNG') ? ver : (link || '-'),
-          link: (brand !== 'SAMSUNG') ? link : '',
-          password: (brand !== 'SAMSUNG') ? password : '-',
-          chip: (brand === 'SAMSUNG') ? chip : '-',
+          bit: isSamsungBrand(brand) ? bit : '-',
+          ver: isSamsungBrand(brand) ? ver : (link || '-'),
+          link: !isSamsungBrand(brand) ? link : '',
+          password: !isSamsungBrand(brand) ? password : '-',
+          chip: isSamsungBrand(brand) ? chip : '-',
           status
         };
         deviceList.unshift(newItem);
       }
 
+      activeBrand = brand;
       closeModal();
+      renderBrandTabs();
       renderTable();
       await syncOnlineData();
     }
