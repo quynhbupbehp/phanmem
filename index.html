@@ -518,8 +518,8 @@
     .status-badge {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      padding: 3px 10px;
+      justify-content: center;
+      padding: 4px 14px;
       border-radius: 20px;
       font-size: 11.5px;
       font-weight: 700;
@@ -923,6 +923,11 @@
         </div>
       </div>
 
+      <div class="form-group" style="margin-top: 12px;">
+        <label>GHI CHÚ (NỘI BỘ):</label>
+        <input type="text" id="inputNote" class="form-control no-uppercase" placeholder="Nhập ghi chú riêng cho máy này...">
+      </div>
+
       <div class="modal-actions">
         <button class="btn-cancel" onclick="closeModal()">HỦY</button>
         <button class="btn-save" onclick="handleSaveData()">LƯU LẠI</button>
@@ -934,27 +939,27 @@
     const FIREBASE_DB_URL = "https://frp-database-default-rtdb.firebaseio.com"; 
 
     const INITIAL_SAMPLES = [
-      { id: "1", brand: "SAMSUNG", model: "M336K", bit: "E", ver: "M336KKSSEGZB2", chip: "EXYNOS", status: "OK", link: "", password: "" },
-      { id: "2", brand: "SAMSUNG", model: "A346E", bit: "E", ver: "A346EXXSEEZC7", chip: "MTK", status: "SỊT", link: "", password: "" },
-      { id: "3", brand: "SAMSUNG", model: "A165N", bit: "5", ver: "A165NKSS5CZA1", chip: "MTK", status: "OK", link: "", password: "" },
-      { id: "4", brand: "SAMSUNG", model: "M325FV", bit: "C", ver: "M325FVXXSCDYD2", chip: "MTK", status: "SỊT", link: "", password: "" },
-      { id: "5", brand: "SAMSUNG", model: "A165F", bit: "A", ver: "A165FXXSADZF2", chip: "MTK", status: "SỊT", link: "", password: "" },
-      { id: "6", brand: "SAMSUNG", model: "A076B", bit: "4", ver: "https://www.youtube.com/watch?v=uzVnNHNyhPY", chip: "MTK", status: "OK", isLink: true, link: "", password: "" },
-      { id: "7", brand: "SAMSUNG", model: "A176B", bit: "5", ver: "A176BXXS5BZBE", chip: "EXYNOS", status: "OK", link: "", password: "" },
-      { id: "8", brand: "SAMSUNG", model: "A27 - A37 - A57", bit: "ALL", ver: "VER NÀO CŨNG SỊT", chip: "EXYNOS", status: "SỊT", link: "", password: "" },
-      { id: "9", brand: "SAMSUNG", model: "A135F", bit: "5", ver: "U6 TRỞ LÊN OK", chip: "EXYNOS", status: "OK", link: "", password: "" },
-      { id: "10", brand: "SAMSUNG", model: "A546E", bit: "C", ver: "A546EXXUCDYDB (CAO HƠN MỰC SAM)", chip: "EXYNOS", status: "OK", link: "", password: "" },
-      { id: "11", brand: "SAMSUNG", model: "G998B", bit: "J", ver: "G998BXXSJHZA6", chip: "EXYNOS", status: "OK", link: "", password: "" },
-      { id: "12", brand: "SAMSUNG", model: "A266B", bit: "9", ver: "A266BXXS9BZD4 (BIT B SỊT)", chip: "EXYNOS", status: "OK", link: "", password: "" },
-      { id: "13", brand: "SAMSUNG", model: "A047F", bit: "F", ver: "-", chip: "-", status: "OK", link: "", password: "" },
-      { id: "14", brand: "SAMSUNG", model: "A566B", bit: "A", ver: "A566BXXSABZD2", chip: "1580 (LỖI WIPE)", status: "OK", link: "", password: "" },
-      { id: "15", brand: "SAMSUNG", model: "A145F", bit: "E", ver: "A145FXXSEDZF1", chip: "EXYNOS", status: "OK", link: "", password: "" },
-      { id: "16", brand: "SAMSUNG", model: "A536B", bit: "M", ver: "A536BXXSMGZE1 (1UI8)", chip: "EXYNOS", status: "OK", link: "", password: "" },
-      { id: "17", brand: "SAMSUNG", model: "G985F", bit: "S", ver: "G985FXXSNHYB", chip: "EXYNOS", status: "OK", link: "", password: "" },
-      { id: "18", brand: "SAMSUNG", model: "A175F", bit: "3", ver: "U3 ĐỖ LẠI OK - CAO HƠN BỎ", chip: "MTK", status: "-", link: "", password: "" },
-      { id: "19", brand: "SAMSUNG", model: "S926N", bit: "-", ver: "-", chip: "EXYNOS", status: "OK", link: "", password: "" },
-      { id: "20", brand: "SAMSUNG", model: "S731B", bit: "9", ver: "-", chip: "EXYNOS", status: "OK", link: "", password: "" },
-      { id: "21", brand: "SAMSUNG", model: "A366N", bit: "-", ver: "QUALCOMM", chip: "QUALCOMM", status: "-", link: "" , password: "" }
+      { id: "1", brand: "SAMSUNG", model: "M336K", bit: "E", ver: "M336KKSSEGZB2", chip: "EXYNOS", status: "OK", link: "", password: "", note: "" },
+      { id: "2", brand: "SAMSUNG", model: "A346E", bit: "E", ver: "A346EXXSEEZC7", chip: "MTK", status: "SỊT", link: "", password: "", note: "" },
+      { id: "3", brand: "SAMSUNG", model: "A165N", bit: "5", ver: "A165NKSS5CZA1", chip: "MTK", status: "OK", link: "", password: "", note: "" },
+      { id: "4", brand: "SAMSUNG", model: "M325FV", bit: "C", ver: "M325FVXXSCDYD2", chip: "MTK", status: "SỊT", link: "", password: "", note: "" },
+      { id: "5", brand: "SAMSUNG", model: "A165F", bit: "A", ver: "A165FXXSADZF2", chip: "MTK", status: "SỊT", link: "", password: "", note: "" },
+      { id: "6", brand: "SAMSUNG", model: "A076B", bit: "4", ver: "https://www.youtube.com/watch?v=uzVnNHNyhPY", chip: "MTK", status: "OK", isLink: true, link: "", password: "", note: "" },
+      { id: "7", brand: "SAMSUNG", model: "A176B", bit: "5", ver: "A176BXXS5BZBE", chip: "EXYNOS", status: "OK", link: "", password: "", note: "" },
+      { id: "8", brand: "SAMSUNG", model: "A27 - A37 - A57", bit: "ALL", ver: "VER NÀO CŨNG SỊT", chip: "EXYNOS", status: "SỊT", link: "", password: "", note: "" },
+      { id: "9", brand: "SAMSUNG", model: "A135F", bit: "5", ver: "U6 TRỞ LÊN OK", chip: "EXYNOS", status: "OK", link: "", password: "", note: "" },
+      { id: "10", brand: "SAMSUNG", model: "A546E", bit: "C", ver: "A546EXXUCDYDB (CAO HƠN MỰC SAM)", chip: "EXYNOS", status: "OK", link: "", password: "", note: "" },
+      { id: "11", brand: "SAMSUNG", model: "G998B", bit: "J", ver: "G998BXXSJHZA6", chip: "EXYNOS", status: "OK", link: "", password: "", note: "" },
+      { id: "12", brand: "SAMSUNG", model: "A266B", bit: "9", ver: "A266BXXS9BZD4 (BIT B SỊT)", chip: "EXYNOS", status: "OK", link: "", password: "", note: "" },
+      { id: "13", brand: "SAMSUNG", model: "A047F", bit: "F", ver: "-", chip: "-", status: "OK", link: "", password: "", note: "" },
+      { id: "14", brand: "SAMSUNG", model: "A566B", bit: "A", ver: "A566BXXSABZD2", chip: "1580 (LỖI WIPE)", status: "OK", link: "", password: "", note: "" },
+      { id: "15", brand: "SAMSUNG", model: "A145F", bit: "E", ver: "A145FXXSEDZF1", chip: "EXYNOS", status: "OK", link: "", password: "", note: "" },
+      { id: "16", brand: "SAMSUNG", model: "A536B", bit: "M", ver: "A536BXXSMGZE1 (1UI8)", chip: "EXYNOS", status: "OK", link: "", password: "", note: "" },
+      { id: "17", brand: "SAMSUNG", model: "G985F", bit: "S", ver: "G985FXXSNHYB", chip: "EXYNOS", status: "OK", link: "", password: "", note: "" },
+      { id: "18", brand: "SAMSUNG", model: "A175F", bit: "3", ver: "U3 ĐỖ LẠI OK - CAO HƠN BỎ", chip: "MTK", status: "-", link: "", password: "", note: "" },
+      { id: "19", brand: "SAMSUNG", model: "S926N", bit: "-", ver: "-", chip: "EXYNOS", status: "OK", link: "", password: "", note: "" },
+      { id: "20", brand: "SAMSUNG", model: "S731B", bit: "9", ver: "-", chip: "EXYNOS", status: "OK", link: "", password: "", note: "" },
+      { id: "21", brand: "SAMSUNG", model: "A366N", bit: "-", ver: "QUALCOMM", chip: "QUALCOMM", status: "-", link: "", password: "", note: "" }
     ];
 
     let deviceList = [];
@@ -978,7 +983,6 @@
           await syncOnlineData();
         }
 
-        // Tự động sao chép dữ liệu tab OPPO sang VOLTE nếu tab VOLTE chưa có dữ liệu nào
         let hasVolte = deviceList.some(item => (item.brand || '').toUpperCase().trim() === 'VOLTE');
         let oppoItems = deviceList.filter(item => (item.brand || '').toUpperCase().trim() === 'OPPO');
         
@@ -1204,8 +1208,8 @@
         tr.setAttribute('onclick', 'selectRow(this, event)');
 
         let statusHtml = '-';
-        if (item.status === 'OK') statusHtml = '<span class="status-badge status-ok">● OK</span>';
-        else if (isFail) statusHtml = '<span class="status-badge status-fail">✕ SỊT</span>';
+        if (item.status === 'OK') statusHtml = '<span class="status-badge status-ok">OK</span>';
+        else if (isFail) statusHtml = '<span class="status-badge status-fail">SỊT</span>';
 
         const safeModel = escapeHtml(item.model || '-');
         const rawUrl = item.link || item.ver || '';
@@ -1339,6 +1343,7 @@
       document.getElementById('inputVer').value = (item.ver === '-') ? '' : (item.ver || '');
       document.getElementById('inputLink').value = item.link || (item.ver && item.ver.startsWith('http') ? item.ver : '') || '';
       document.getElementById('inputPassword').value = (item.password === '-') ? '' : (item.password || '');
+      document.getElementById('inputNote').value = item.note || '';
 
       const upperChip = (item.chip || '').toUpperCase();
       const chipSelect = document.getElementById('inputChip');
@@ -1416,6 +1421,7 @@
       document.getElementById('inputVer').value = '';
       document.getElementById('inputLink').value = '';
       document.getElementById('inputPassword').value = '';
+      document.getElementById('inputNote').value = '';
       document.getElementById('inputChip').value = 'EXYNOS';
       document.getElementById('inputStatus').value = 'OK';
       document.getElementById('inputStatusNonSam').value = 'OK';
@@ -1436,6 +1442,7 @@
       document.getElementById('inputVer').value = (item.ver === '-') ? '' : (item.ver || '');
       document.getElementById('inputLink').value = item.link || (item.ver && item.ver.startsWith('http') ? item.ver : '') || '';
       document.getElementById('inputPassword').value = (item.password === '-') ? '' : (item.password || '');
+      document.getElementById('inputNote').value = item.note || '';
       
       const upperChip = (item.chip || '').toUpperCase();
       const chipSelect = document.getElementById('inputChip');
@@ -1464,6 +1471,7 @@
       const ver = (document.getElementById('inputVer').value.trim() || '-').toUpperCase();
       const link = document.getElementById('inputLink').value.trim();
       const password = document.getElementById('inputPassword').value.trim() || '-';
+      const note = document.getElementById('inputNote').value.trim();
       const chip = document.getElementById('inputChip').value.toUpperCase();
       const status = isSamsungBrand(brand) ? 
         document.getElementById('inputStatus').value.toUpperCase() : 
@@ -1485,6 +1493,7 @@
             ver: isSamsungBrand(brand) ? ver : (link || '-'),
             link: !isSamsungBrand(brand) ? link : (deviceList[index].link || ''),
             password: !isSamsungBrand(brand) ? password : '-',
+            note,
             chip: isSamsungBrand(brand) ? chip : '-',
             status
           };
@@ -1498,6 +1507,7 @@
           ver: isSamsungBrand(brand) ? ver : (link || '-'),
           link: !isSamsungBrand(brand) ? link : '',
           password: !isSamsungBrand(brand) ? password : '-',
+          note,
           chip: isSamsungBrand(brand) ? chip : '-',
           status
         };
